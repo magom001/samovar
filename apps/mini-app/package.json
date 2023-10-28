@@ -8,14 +8,18 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.59",
+    "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "ui": "*",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@twa-dev/types": "^6.9.0",
+    "@types/leaflet": "^1",
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
     "tsconfig": "*"
