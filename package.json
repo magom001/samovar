@@ -13,7 +13,7 @@
     "turbo": "latest"
   },
   "name": "samovar",
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "yarn@4.0.1",
   "workspaces": [
     "apps/*",
     "packages/*"
