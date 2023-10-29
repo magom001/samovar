@@ -2384,6 +2384,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.10.0":
+  version: 1.10.0
+  resolution: "@remix-run/router@npm:1.10.0"
+  checksum: 062c7203c0e5f40f22746e1deb3e8063a3548868bfad91edc3dc8457fe3e3bc952f4d5c266f4481a7627bae5815c8d5eb9c987b1951a259b2697ccd5ed35e3da
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-babel@npm:^5.2.0":
   version: 5.3.1
   resolution: "@rollup/plugin-babel@npm:5.3.1"
@@ -6501,7 +6508,6 @@ __metadata:
   dependencies:
     "@vercel/style-guide": "npm:^5.0.0"
     eslint-config-turbo: "npm:^1.10.12"
-    typescript: "npm:^4.5.3"
   languageName: unknown
   linkType: soft
 
@@ -6548,6 +6554,13 @@ __metadata:
   peerDependencies:
     eslint: ">6.6.0"
   checksum: a5958c1b9cf8c034e92dc210bb631e07eed2980991098dcc165724d0d08c0c83c8500f5c55cbe238fa1b10d13553e018ea30d03a28361cae558aac15cca3abf7
+  languageName: node
+  linkType: hard
+
+"eslint-custom-config@npm:*":
+  version: 1.0.0
+  resolution: "eslint-custom-config@npm:1.0.0"
+  checksum: 8462088218c1c2ba7fbf9910c9410786244a0a9201f0dabf0fd1efbf0dbba96208bff95dcfaafa323379cfadbf2aa7f340cbfb30fc019623091386657af0a690
   languageName: node
   linkType: hard
 
@@ -10248,15 +10261,16 @@ __metadata:
     "@types/node": "npm:^16.18.59"
     "@types/react": "npm:^18.2.33"
     "@types/react-dom": "npm:^18.2.14"
+    eslint-custom-config: "npm:*"
     i18next: "npm:^23.6.0"
     leaflet: "npm:^1.9.4"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-i18next: "npm:^13.3.1"
     react-leaflet: "npm:^4.2.1"
+    react-router-dom: "npm:^6.17.0"
     react-scripts: "npm:5.0.1"
     tsconfig: "npm:*"
-    typescript: "npm:^4.9.5"
     ui: "npm:*"
     web-vitals: "npm:^2.1.4"
   languageName: unknown
@@ -12482,6 +12496,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^6.17.0":
+  version: 6.17.0
+  resolution: "react-router-dom@npm:6.17.0"
+  dependencies:
+    "@remix-run/router": "npm:1.10.0"
+    react-router: "npm:6.17.0"
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: c22e66a2b8d5678434039fe4123f76ab85e6e46d526fbf4b29b4b6423c5589759535d56afa51a4f598b5c15be7e47f2d0d409cd7a40f21c0ecdc59605b7f4bfa
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.17.0":
+  version: 6.17.0
+  resolution: "react-router@npm:6.17.0"
+  dependencies:
+    "@remix-run/router": "npm:1.10.0"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: f940ee641c87f7c179f6547b65c6b055f916d4b26b30f9b964cb1628f39b1899f25e4b92285427660c5444809c04dcc42dd976d9ce12ed6ed13b1be50a29c691
+  languageName: node
+  linkType: hard
+
 "react-scripts@npm:5.0.1":
   version: 5.0.1
   resolution: "react-scripts@npm:5.0.1"
@@ -13115,6 +13153,7 @@ __metadata:
     prettier: "npm:^3.0.3"
     tsconfig: "npm:*"
     turbo: "npm:latest"
+    typescript: "npm:^5.2.2"
   languageName: unknown
   linkType: soft
 
@@ -14667,7 +14706,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.5.2, typescript@npm:^4.5.3, typescript@npm:^4.9.5":
+"typescript@npm:^4.5.2":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -14677,13 +14716,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^4.5.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.5.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.9.5#optional!builtin<compat/typescript>":
+"typescript@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "typescript@npm:5.2.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 91ae3e6193d0ddb8656d4c418a033f0f75dec5e077ebbc2bd6d76439b93f35683936ee1bdc0e9cf94ec76863aa49f27159b5788219b50e1cd0cd6d110aa34b07
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^4.5.2#optional!builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: e3333f887c6829dfe0ab6c1dbe0dd1e3e2aeb56c66460cb85c5440c566f900c833d370ca34eb47558c0c69e78ced4bfe09b8f4f98b6de7afed9b84b8d1dd06a1
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
+  version: 5.2.2
+  resolution: "typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 062c1cee1990e6b9419ce8a55162b8dc917eb87f807e4de0327dbc1c2fa4e5f61bc0dd4e034d38ff541d1ed0479b53bcee8e4de3a4075c51a1724eb6216cb6f5
   languageName: node
   linkType: hard
 

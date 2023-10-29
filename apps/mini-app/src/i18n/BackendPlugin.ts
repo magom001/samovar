@@ -1,18 +1,29 @@
-import { BackendModule } from "i18next";
+import type { BackendModule } from "i18next";
 
 const LazyImportPlugin: BackendModule = {
   type: "backend",
-  init: function () {},
-  read: function (language, namespace, callback) {
+  init() {
+    // Noop
+  },
+  read(language, namespace, callback) {
     console.log("reading", namespace, language);
     import(
       /* webpackChunkName: "i18n-[request]" */ `./locales/${language}/${namespace}.json`
-    ).then((obj) => {
-      callback(null, obj);
-    });
+    )
+      .then((obj: object) => {
+        callback(null, obj);
+      })
+      .catch((err: Error) => {
+        console.error(err);
+        callback(err, {});
+      });
   },
-  save: function () {},
-  create: function () {},
+  save() {
+    // Noop
+  },
+  create() {
+    // Noop
+  },
 };
 
 export default LazyImportPlugin;
