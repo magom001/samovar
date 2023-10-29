@@ -1,3 +1,4 @@
+import i18nBuilder from "./i18n/Builder";
 import "./App.css";
 import {
   MapContainer,
@@ -7,8 +8,35 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import { Icon } from "leaflet";
-import type { Telegram, WebAppInitData } from "@twa-dev/types";
-import { useEffect, useState } from "react";
+import type { Telegram } from "@twa-dev/types";
+import { Suspense, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
+/**
+ * Get the value of a cookie
+ * Source: https://gist.github.com/wpsmith/6cf23551dd140fb72ae7
+ * @param  {String} name  The name of the cookie
+ * @return {String}       The cookie value
+ */
+function getCookie(name: string) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) {
+    return parts.pop()!.split(";").shift();
+  }
+}
+
+function getUserLang() {
+  const lang = getCookie("lang");
+
+  return (
+    lang ?? window.Telegram.WebApp?.initDataUnsafe?.user?.language_code ?? "en"
+  );
+}
+
+i18nBuilder({
+  lng: getUserLang(),
+});
 
 declare global {
   interface Window {
@@ -89,14 +117,24 @@ function Toolbox() {
       console.log("zoomend");
     },
   });
+  const { t, i18n } = useTranslation(["common", "error"]);
   return (
     <div className="toolbox">
-      <h1>Filter here</h1>
-
-      {/* <p className="break-all"> */}
-      {/* {userData?.firstName} {userData?.lastName} */}
-      {/* </p> */}
-      {/* <p>{err?.message}</p> */}
+      <h1>{t("common:filters")}</h1>
+      <p>{t("common:test")}</p>
+      <p>{t("error:Unexpected error occurred")}</p>
+      <p>{t("common:y_other", { count: 123 })}</p>
+      <p className="break-all">
+        {JSON.stringify(window.Telegram.WebApp.initDataUnsafe)}
+      </p>
+      <button
+        onClick={() => {
+          document.cookie = `lang=en; max-age=31536000;`;
+          i18n.changeLanguage("en");
+        }}
+      >
+        Switch lang
+      </button>
     </div>
   );
 }
@@ -119,7 +157,9 @@ function App() {
         zoomControl={false}
         scrollWheelZoom={false}
       >
-        <Toolbox />
+        <Suspense fallback={null}>
+          <Toolbox />
+        </Suspense>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
