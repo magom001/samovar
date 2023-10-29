@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import i18nBuilder from "./i18n/Builder";
 import { Root } from "./routes/Root";
+import { About } from "./routes/About";
 
 /**
  * Get the value of a cookie
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <div>About</div>,
+        element: <About />,
       },
     ],
   },

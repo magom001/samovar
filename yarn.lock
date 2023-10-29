@@ -2795,7 +2795,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.14":
+"@types/babel__core@npm:*, @types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.14":
   version: 7.20.3
   resolution: "@types/babel__core@npm:7.20.3"
   dependencies:
@@ -2871,6 +2871,18 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 79fd5c32a8bb5c9548369e6da3221b6a820f3a8c5396d50f6f642712b9f4c1c881ef86bdf48994a4a279e81998563410b8843c5a10dde5521d5ef6a8ae944c3b
+  languageName: node
+  linkType: hard
+
+"@types/customize-cra@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "@types/customize-cra@npm:1.0.7"
+  dependencies:
+    "@types/babel__core": "npm:*"
+    "@types/webpack": "npm:^4"
+    "@types/webpack-bundle-analyzer": "npm:^3"
+    "@types/workbox-webpack-plugin": "npm:^5.1.8"
+  checksum: 39659d95405ec787d78a1a1505260ad7336d4f371a08e078f6e64ba49c89dee034602a76740d588e581b4361a5f5462dc1cfb76c95ea4170dab985f4f4bcfe6e
   languageName: node
   linkType: hard
 
@@ -3233,10 +3245,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/source-list-map@npm:*":
+  version: 0.1.4
+  resolution: "@types/source-list-map@npm:0.1.4"
+  checksum: d08a191a1fa0549ef2bd0aafdff3973681de323315a011fef907ffdeb0cab534a6aa508b37333278e2a63f290afad6ee3e4e950594fb75b516e5b9b65af338bf
+  languageName: node
+  linkType: hard
+
 "@types/stack-utils@npm:^2.0.0":
   version: 2.0.2
   resolution: "@types/stack-utils@npm:2.0.2"
   checksum: c2bf0de59ee0a1e2b2031e8a6225f412976377868c42a66537e284a020e9eb4068ed9b9da69d14c1727ab56e605532e877777c7d1bbfd3e9a42ae17bcef7d213
+  languageName: node
+  linkType: hard
+
+"@types/tapable@npm:^1":
+  version: 1.0.10
+  resolution: "@types/tapable@npm:1.0.10"
+  checksum: 414e0e94085f6a280d34eb44f8e2434a4029b8c4eb4903e01dcc58dae7f61fff403ace58dcd54ca543b318a4edb390cd4c3f7ff4504c97ef740fd681497f7b43
   languageName: node
   linkType: hard
 
@@ -3269,6 +3295,56 @@ __metadata:
   version: 2.0.5
   resolution: "@types/trusted-types@npm:2.0.5"
   checksum: 0b1a08862ff296ef1ff6fe11709f1f0f1f0d01b5800f0c0785dd56259da1ce41baa57edcf484bce22c7c09a27c351399006f6aecb0e077fe7a2aae6dc0b97367
+  languageName: node
+  linkType: hard
+
+"@types/uglify-js@npm:*":
+  version: 3.17.3
+  resolution: "@types/uglify-js@npm:3.17.3"
+  dependencies:
+    source-map: "npm:^0.6.1"
+  checksum: 718b7d6170acf2c2bb95e7cc9a1958c319d7d8f46633b3b9123a77bcf4801fd7c5d5719ebdb73e8fe1bfe261748bdd2238e65e2dfefc8f4632fa223542646821
+  languageName: node
+  linkType: hard
+
+"@types/webpack-bundle-analyzer@npm:^3":
+  version: 3.9.7
+  resolution: "@types/webpack-bundle-analyzer@npm:3.9.7"
+  dependencies:
+    "@types/webpack": "npm:^4"
+  checksum: 150d7797e740b2028d9d828b267d680a0c19de062814a82c26b5046e8d36d83ed22a93beee6ae47ab2ff5764efdfebb98d0bc304f89a2b8c1143f00c5bc7d414
+  languageName: node
+  linkType: hard
+
+"@types/webpack-sources@npm:*":
+  version: 3.2.2
+  resolution: "@types/webpack-sources@npm:3.2.2"
+  dependencies:
+    "@types/node": "npm:*"
+    "@types/source-list-map": "npm:*"
+    source-map: "npm:^0.7.3"
+  checksum: 4c7a0bfdaa7c8dbed505c1de5bb3cc4a3d7a2f00f982948bc2f1795d46920465d412d62f8fc344a09b78a2c47a2782aad525b651be4018ae40be0f31748dfaf5
+  languageName: node
+  linkType: hard
+
+"@types/webpack@npm:^4":
+  version: 4.41.35
+  resolution: "@types/webpack@npm:4.41.35"
+  dependencies:
+    "@types/node": "npm:*"
+    "@types/tapable": "npm:^1"
+    "@types/uglify-js": "npm:*"
+    "@types/webpack-sources": "npm:*"
+    anymatch: "npm:^3.0.0"
+    source-map: "npm:^0.6.0"
+  checksum: ec6b9fda027ff6f7f9efeb4bcfb37607a15fe1e2f2f0883e3500fe474ba0a127ea62783cd19859bbef921cfad22cd680e50bcc2c1963482c6486263886877130
+  languageName: node
+  linkType: hard
+
+"@types/workbox-webpack-plugin@npm:^5.1.8":
+  version: 5.1.8
+  resolution: "@types/workbox-webpack-plugin@npm:5.1.8"
+  checksum: ad43286561a7dbb434c6c6b154db37a93bb725a8f9483c443d62e923c47acba5b4a40b9cad420c110869b3a8fbd7e6e76ea17312f97c72f6b4cd22339d96cf1d
   languageName: node
   linkType: hard
 
@@ -4033,7 +4109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"anymatch@npm:^3.0.3, anymatch@npm:~3.1.2":
+"anymatch@npm:^3.0.0, anymatch@npm:^3.0.3, anymatch@npm:~3.1.2":
   version: 3.1.3
   resolution: "anymatch@npm:3.1.3"
   dependencies:
@@ -5661,6 +5737,15 @@ __metadata:
   version: 3.1.2
   resolution: "csstype@npm:3.1.2"
   checksum: 32c038af259897c807ac738d9eab16b3d86747c72b09d5c740978e06f067f9b7b1737e1b75e407c7ab1fe1543dc95f20e202b4786aeb1b8d3bdf5d5ce655e6c6
+  languageName: node
+  linkType: hard
+
+"customize-cra@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "customize-cra@npm:1.0.0"
+  dependencies:
+    lodash.flow: "npm:^3.5.0"
+  checksum: 5a091d68610acfc44053e89a3a76d3ed3ee3c7a7f16a7e6fd2db9db4c89bcad906a02641185b9612689f7f954ed52ee7b609ec7f1fecba243ec4fe5d09224cdf
   languageName: node
   linkType: hard
 
@@ -9936,6 +10021,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.flow@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "lodash.flow@npm:3.5.0"
+  checksum: b3202ddbb79e5aab41719806d0d5ae969f64ae6b59e6bdaaecaa96ec68d6ba429e544017fe0e71ecf5b7ee3cea7b45d43c46b7d67ca159d6cca86fca76c61a31
+  languageName: node
+  linkType: hard
+
 "lodash.get@npm:^4.4.2":
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
@@ -10256,15 +10348,18 @@ __metadata:
     "@testing-library/react": "npm:^13.4.0"
     "@testing-library/user-event": "npm:^13.5.0"
     "@twa-dev/types": "npm:^6.9.0"
+    "@types/customize-cra": "npm:^1.0.7"
     "@types/jest": "npm:^27.5.2"
     "@types/leaflet": "npm:^1"
     "@types/node": "npm:^16.18.59"
     "@types/react": "npm:^18.2.33"
     "@types/react-dom": "npm:^18.2.14"
+    customize-cra: "npm:^1.0.0"
     eslint-custom-config: "npm:*"
     i18next: "npm:^23.6.0"
     leaflet: "npm:^1.9.4"
     react: "npm:^18.2.0"
+    react-app-rewired: "npm:^2.2.1"
     react-dom: "npm:^18.2.0"
     react-i18next: "npm:^13.3.1"
     react-leaflet: "npm:^4.2.1"
@@ -12386,6 +12481,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-app-rewired@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "react-app-rewired@npm:2.2.1"
+  dependencies:
+    semver: "npm:^5.6.0"
+  peerDependencies:
+    react-scripts: ">=2.1.3"
+  bin:
+    react-app-rewired: bin/index.js
+  checksum: 722e20f5e5691b61e8c13da014c4fe38d87d8843715270484aa0b0e1d6605faf1c8961f18bde41ca82493975cb69f5259d943e5a40a79b0c80536a3dde057b3d
+  languageName: node
+  linkType: hard
+
 "react-dev-utils@npm:^12.0.1":
   version: 12.0.1
   resolution: "react-dev-utils@npm:12.0.1"
@@ -13276,7 +13384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.6.0":
   version: 5.7.2
   resolution: "semver@npm:5.7.2"
   bin:
