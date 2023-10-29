@@ -1,25 +1,9 @@
-.App {
-  text-align: center;
-}
-
 .leaflet-container {
   width: 100vw;
   height: 100vh;
+  z-index: 0;
 }
 
 .custom-avatar {
   border-radius: 50%;
-}
-
-.toolbox {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.break-all {
-  word-break: break-all;
 }

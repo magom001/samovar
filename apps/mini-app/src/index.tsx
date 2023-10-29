@@ -4,6 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+try {
+  window.Telegram.WebApp.ready();
+  window.Telegram.WebApp.expand();
+  window.Telegram.WebApp.enableClosingConfirmation();
+} catch (err: unknown) {
+  console.error(err);
+}
+
 const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>

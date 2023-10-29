@@ -1,7 +1,11 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Suspense } from "react";
+import { RouterProvider } from "react-router-dom";
+import { CssBaseline } from "ui/CssBaseline";
+import { createTheme } from "ui/styles";
+import { ThemeProvider } from "ui/styles/ThemeProvider";
+import "./App.css";
 import i18nBuilder from "./i18n/Builder";
-import { Root } from "./routes/Root";
-import { About } from "./routes/About";
+import { router } from "./routes/Root";
 
 /**
  * Get the value of a cookie
@@ -32,25 +36,21 @@ i18nBuilder({
   throw err;
 });
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    children: [
-      {
-        path: "/",
-        element: <div>Home</div>,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-    ],
+const uiTheme = createTheme({
+  palette: {
+    mode: window.Telegram.WebApp.colorScheme ?? "light",
   },
-]);
+});
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider theme={uiTheme}>
+      <Suspense>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </Suspense>
+    </ThemeProvider>
+  );
 }
 
 export default App;

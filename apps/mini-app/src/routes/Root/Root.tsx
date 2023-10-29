@@ -1,22 +1,73 @@
-import { Link, Outlet } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import {
+  Link,
+  Outlet,
+  createBrowserRouter,
+  useLocation,
+} from "react-router-dom";
+import { BottomNavigation } from "ui/BottomNavigation";
+import { BottomNavigationAction } from "ui/BottomNavigationAction";
+import { Icon } from "ui/Icon";
+import { Paper } from "ui/Paper";
+import { About } from "../About";
+import { MapView } from "../MapView";
+
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        path: "/",
+        element: <div>Home</div>,
+      },
+      {
+        path: "/map",
+        element: <MapView />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+    ],
+  },
+]);
 
 export function Root() {
+  const { t } = useTranslation(["common"]);
+  const location = useLocation();
+
   return (
-    <div>
-      <header>
-        <h1>Mini App</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+    <main>
       <Outlet />
-    </div>
+      <Paper
+        elevation={3}
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+      >
+        <BottomNavigation showLabels value={location.pathname}>
+          <BottomNavigationAction
+            LinkComponent={Link}
+            icon={<Icon>home</Icon>}
+            label={t("common:home")}
+            to="/"
+            value="/"
+          />
+          <BottomNavigationAction
+            LinkComponent={Link}
+            icon={<Icon>map</Icon>}
+            label={t("common:home")}
+            to="/map"
+            value="/map"
+          />
+          <BottomNavigationAction
+            LinkComponent={Link}
+            icon={<Icon>person</Icon>}
+            label={t("common:profile")}
+            to="/about"
+            value="/about"
+          />
+        </BottomNavigation>
+      </Paper>
+    </main>
   );
 }
