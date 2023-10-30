@@ -9,8 +9,6 @@ import { BottomNavigation } from "ui/BottomNavigation";
 import { BottomNavigationAction } from "ui/BottomNavigationAction";
 import { Icon } from "ui/Icon";
 import { Paper } from "ui/Paper";
-import { About } from "../About";
-import { MapView } from "../MapView";
 
 export const router = createBrowserRouter([
   {
@@ -23,11 +21,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/map",
-        element: <MapView />,
+        lazy: () => import("../MapView"),
       },
       {
         path: "/about",
-        element: <About />,
+        lazy: () => import("../About"),
       },
     ],
   },
