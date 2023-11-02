@@ -6,5 +6,6 @@ module.exports = {
     "@typescript-eslint/no-unnecessary-condition": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/non-nullable-type-assertion-style": "off",
+    "@typescript-eslint/no-misused-promises": "off",
   },
 };

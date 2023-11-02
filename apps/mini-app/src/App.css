@@ -7,3 +7,7 @@
 .custom-avatar {
   border-radius: 50%;
 }
+
+.leaflet-tile-container {
+  filter: grayscale(1) brightness(0.76) contrast(1.4) grayscale(100%);
+}
