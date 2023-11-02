@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { VersioningType } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import {
   FastifyAdapter,
   NestFastifyApplication,
@@ -12,6 +12,8 @@ async function bootstrap() {
     new FastifyAdapter({ logger: true }),
   );
 
+  app.useGlobalPipes(new ValidationPipe());
+
   app.setGlobalPrefix('api');
 
   app.enableVersioning({
@@ -21,4 +23,5 @@ async function bootstrap() {
 
   await app.listen(5002);
 }
+
 bootstrap();

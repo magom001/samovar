@@ -2186,6 +2186,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hapi/hoek@npm:^9.0.0":
+  version: 9.3.0
+  resolution: "@hapi/hoek@npm:9.3.0"
+  checksum: a096063805051fb8bba4c947e293c664b05a32b47e13bc654c0dd43813a1cec993bdd8f29ceb838020299e1d0f89f68dc0d62a603c13c9cc8541963f0beca055
+  languageName: node
+  linkType: hard
+
+"@hapi/topo@npm:^5.0.0":
+  version: 5.1.0
+  resolution: "@hapi/topo@npm:5.1.0"
+  dependencies:
+    "@hapi/hoek": "npm:^9.0.0"
+  checksum: b16b06d9357947149e032bdf10151eb71aea8057c79c4046bf32393cb89d0d0f7ca501c40c0f7534a5ceca078de0700d2257ac855c15e59fe4e00bba2f25c86f
+  languageName: node
+  linkType: hard
+
 "@hookform/resolvers@npm:^3.3.2":
   version: 3.3.2
   resolution: "@hookform/resolvers@npm:3.3.2"
@@ -3049,6 +3065,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nestjs/config@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "@nestjs/config@npm:3.1.1"
+  dependencies:
+    dotenv: "npm:16.3.1"
+    dotenv-expand: "npm:10.0.0"
+    lodash: "npm:4.17.21"
+    uuid: "npm:9.0.0"
+  peerDependencies:
+    "@nestjs/common": ^8.0.0 || ^9.0.0 || ^10.0.0
+    reflect-metadata: ^0.1.13
+  checksum: d8e463c3000e2a412f2a69f57dc49706df1c7653d14e70e9261df4b3e99d69acb844cc417609354d07731a6b2bbada73db1e5263ba29d573f60deb9a173476eb
+  languageName: node
+  linkType: hard
+
 "@nestjs/core@npm:^10.0.0":
   version: 10.2.8
   resolution: "@nestjs/core@npm:10.2.8"
@@ -3371,6 +3402,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sideway/address@npm:^4.1.3":
+  version: 4.1.4
+  resolution: "@sideway/address@npm:4.1.4"
+  dependencies:
+    "@hapi/hoek": "npm:^9.0.0"
+  checksum: c6fad7d87fb016053e9e9b69c2f2d1f23036d5f1696df141e64c3c58bcf8c7d2a4133348adc2d246682410364d5922c6271ae556122741025794fb7c19814aae
+  languageName: node
+  linkType: hard
+
+"@sideway/formula@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@sideway/formula@npm:3.0.1"
+  checksum: 3fe81fa9662efc076bf41612b060eb9b02e846ea4bea5bd114f1662b7f1541e9dedcf98aff0d24400bcb92f113964a50e0290b86e284edbdf6346fa9b7e2bf2c
+  languageName: node
+  linkType: hard
+
+"@sideway/pinpoint@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@sideway/pinpoint@npm:2.0.0"
+  checksum: d2ca75dacaf69b8fc0bb8916a204e01def3105ee44d8be16c355e5f58189eb94039e15ce831f3d544f229889ccfa35562a0ce2516179f3a7ee1bbe0b71e55b36
+  languageName: node
+  linkType: hard
+
 "@sinclair/typebox@npm:^0.24.1":
   version: 0.24.51
   resolution: "@sinclair/typebox@npm:0.24.51"
@@ -3619,6 +3673,48 @@ __metadata:
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
   checksum: ff57edaeab31322c80c3f01d55404b4cebb907b9ec7672b96a1a14d053f172046b01c5f27b45677927ebee8ed91bce695a7d09edec9a48875cfacabe39d0426a
+  languageName: node
+  linkType: hard
+
+"@tma.js/colors@npm:0.0.5":
+  version: 0.0.5
+  resolution: "@tma.js/colors@npm:0.0.5"
+  checksum: ecf7557b3ed1d6c23abd7ff4531ccabf8871c49474762653183756ee98008b2c10c46aa211acf7c5a7f897012d45d7758ad322d14256e965a4daacb6fbecf50e
+  languageName: node
+  linkType: hard
+
+"@tma.js/init-data-node@npm:^0.0.17":
+  version: 0.0.17
+  resolution: "@tma.js/init-data-node@npm:0.0.17"
+  dependencies:
+    "@tma.js/init-data": "npm:0.2.19"
+  checksum: 1aaeebb6da67cd964a24ca93b06ea6268804e772b06bcdd96bd3da4629f81cff984f8058b6b78e8dcff05832e284e20199d93e441a3826af66e825a605161f8e
+  languageName: node
+  linkType: hard
+
+"@tma.js/init-data@npm:0.2.19":
+  version: 0.2.19
+  resolution: "@tma.js/init-data@npm:0.2.19"
+  dependencies:
+    "@tma.js/parsing": "npm:0.1.2"
+  checksum: 29dbe92e774d68bc362999fd121dd77799292c30c9bb9c2d30fca9efff9d04f0cc85ab350e638fb5e0c7148db3c842d59ace9d038339415af8d906072bd4b796
+  languageName: node
+  linkType: hard
+
+"@tma.js/parsing@npm:0.1.2":
+  version: 0.1.2
+  resolution: "@tma.js/parsing@npm:0.1.2"
+  dependencies:
+    "@tma.js/colors": "npm:0.0.5"
+    "@tma.js/util-types": "npm:0.0.3"
+  checksum: 8b382f46a1f76da0b10b7e82d2cfa2596e8ddea8c69baf175aed05de5958ee7a358e5c9da9e7c253be866bdacc2ca98aa0a833de8100309a334694d71ca7a47c
+  languageName: node
+  linkType: hard
+
+"@tma.js/util-types@npm:0.0.3":
+  version: 0.0.3
+  resolution: "@tma.js/util-types@npm:0.0.3"
+  checksum: 7f5bc02d52a3d6681339678587c137638d853db58c538e622e3c673fbc828009615ef2312e2234e4bb6123aac674276a8eb5a1e702175223158f83eb73e44477
   languageName: node
   linkType: hard
 
@@ -4298,6 +4394,13 @@ __metadata:
   dependencies:
     source-map: "npm:^0.6.1"
   checksum: 718b7d6170acf2c2bb95e7cc9a1958c319d7d8f46633b3b9123a77bcf4801fd7c5d5719ebdb73e8fe1bfe261748bdd2238e65e2dfefc8f4632fa223542646821
+  languageName: node
+  linkType: hard
+
+"@types/validator@npm:^13.7.10":
+  version: 13.11.5
+  resolution: "@types/validator@npm:13.11.5"
+  checksum: 3c85a355802b97c71986c2b326bf0003bc32ae0283c780312feb984edaa98f786f26431031dae803e4cb603c097b51864e13792e06d85343a8fcbcf19d0fac7e
   languageName: node
   linkType: hard
 
@@ -5271,21 +5374,26 @@ __metadata:
   dependencies:
     "@nestjs/cli": "npm:^10.0.0"
     "@nestjs/common": "npm:^10.0.0"
+    "@nestjs/config": "npm:^3.1.1"
     "@nestjs/core": "npm:^10.0.0"
     "@nestjs/platform-express": "npm:^10.0.0"
     "@nestjs/platform-fastify": "npm:^10.2.8"
     "@nestjs/schematics": "npm:^10.0.0"
     "@nestjs/testing": "npm:^10.0.0"
+    "@tma.js/init-data-node": "npm:^0.0.17"
     "@types/express": "npm:^4.17.17"
     "@types/jest": "npm:^29.5.2"
     "@types/node": "npm:^20.3.1"
     "@types/supertest": "npm:^2.0.12"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
     "@typescript-eslint/parser": "npm:^6.0.0"
+    class-transformer: "npm:^0.5.1"
+    class-validator: "npm:^0.14.0"
     eslint: "npm:^8.42.0"
     eslint-config-prettier: "npm:^9.0.0"
     eslint-plugin-prettier: "npm:^5.0.0"
     jest: "npm:^29.5.0"
+    joi: "npm:^17.11.0"
     prettier: "npm:^3.0.0"
     reflect-metadata: "npm:^0.1.13"
     rxjs: "npm:^7.8.1"
@@ -6370,6 +6478,24 @@ __metadata:
   version: 1.2.3
   resolution: "cjs-module-lexer@npm:1.2.3"
   checksum: 0de9a9c3fad03a46804c0d38e7b712fb282584a9c7ef1ed44cae22fb71d9bb600309d66a9711ac36a596fd03422f5bb03e021e8f369c12a39fa1786ae531baab
+  languageName: node
+  linkType: hard
+
+"class-transformer@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "class-transformer@npm:0.5.1"
+  checksum: 19809914e51c6db42c036166839906420bb60367df14e15f49c45c8c1231bf25ae661ebe94736ee29cc688b77101ef851a8acca299375cc52fc141b64acde18a
+  languageName: node
+  linkType: hard
+
+"class-validator@npm:^0.14.0":
+  version: 0.14.0
+  resolution: "class-validator@npm:0.14.0"
+  dependencies:
+    "@types/validator": "npm:^13.7.10"
+    libphonenumber-js: "npm:^1.10.14"
+    validator: "npm:^13.7.0"
+  checksum: 1f7c34052f0c342b1d27c5aec7c42b646bb77a56874acc0d8003e2ad8f0294e7da18b43e9caaac8e8817cbb309cf9f14bcebe4611994390ca4818f3b393783dc
   languageName: node
   linkType: hard
 
@@ -7700,6 +7826,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-expand@npm:10.0.0":
+  version: 10.0.0
+  resolution: "dotenv-expand@npm:10.0.0"
+  checksum: 298f5018e29cfdcb0b5f463ba8e8627749103fbcf6cf81c561119115754ed582deee37b49dfc7253028aaba875ab7aea5fa90e5dac88e511d009ab0e6677924e
+  languageName: node
+  linkType: hard
+
 "dotenv-expand@npm:^5.1.0":
   version: 5.1.0
   resolution: "dotenv-expand@npm:5.1.0"
@@ -7711,6 +7844,13 @@ __metadata:
   version: 16.0.3
   resolution: "dotenv@npm:16.0.3"
   checksum: 109457ac5f9e930ca8066ea33887b6f839ab24d647a7a8b49ddcd1f32662e2c35591c5e5b9819063e430148a664d0927f0cbe60cf9575d89bc524f47ff7e78f0
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:16.3.1":
+  version: 16.3.1
+  resolution: "dotenv@npm:16.3.1"
+  checksum: b95ff1bbe624ead85a3cd70dbd827e8e06d5f05f716f2d0cbc476532d54c7c9469c3bc4dd93ea519f6ad711cb522c00ac9a62b6eb340d5affae8008facc3fbd7
   languageName: node
   linkType: hard
 
@@ -11918,6 +12058,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"joi@npm:^17.11.0":
+  version: 17.11.0
+  resolution: "joi@npm:17.11.0"
+  dependencies:
+    "@hapi/hoek": "npm:^9.0.0"
+    "@hapi/topo": "npm:^5.0.0"
+    "@sideway/address": "npm:^4.1.3"
+    "@sideway/formula": "npm:^3.0.1"
+    "@sideway/pinpoint": "npm:^2.0.0"
+  checksum: c41c86fe772828b88fbdbcaef2e41235ccbb107c22523a377f9a2fd39829f203213f37a352589f49d9a9b38bf1c645846defede8b81d8c1f3123117c1a600010
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -12238,6 +12391,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"libphonenumber-js@npm:^1.10.14":
+  version: 1.10.49
+  resolution: "libphonenumber-js@npm:1.10.49"
+  checksum: 0d9d854f326a77cc75dc027161477771bca4d99d9bf59ed241ec099cbf71982b2db3c6f9dffe22550510678dc9f1b097a868ee57a757ae5113449374f37df115
+  languageName: node
+  linkType: hard
+
 "light-my-request@npm:5.11.0, light-my-request@npm:^5.11.0":
   version: 5.11.0
   resolution: "light-my-request@npm:5.11.0"
@@ -12365,7 +12525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
+"lodash@npm:4.17.21, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -18046,6 +18206,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"uuid@npm:9.0.0":
+  version: 9.0.0
+  resolution: "uuid@npm:9.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 8867e438990d1d33ac61093e2e4e3477a2148b844e4fa9e3c2360fa4399292429c4b6ec64537eb1659c97b2d10db349c673ad58b50e2824a11e0d3630de3c056
+  languageName: node
+  linkType: hard
+
 "uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
@@ -18100,6 +18269,13 @@ __metadata:
   dependencies:
     builtins: "npm:^5.0.0"
   checksum: 36a9067650f5b90c573a0d394b89ddffb08fe58a60507d7938ad7c38f25055cc5c6bf4a10fbd604abe1f4a31062cbe0dfa8e7ccad37b249da32e7b71889c079e
+  languageName: node
+  linkType: hard
+
+"validator@npm:^13.7.0":
+  version: 13.11.0
+  resolution: "validator@npm:13.11.0"
+  checksum: 0107da3add5a4ebc6391dac103c55f6d8ed055bbcc29a4c9cbf89eacfc39ba102a5618c470bdc33c6487d30847771a892134a8c791f06ef0962dd4b7a60ae0f5
   languageName: node
   linkType: hard
 
