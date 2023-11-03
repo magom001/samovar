@@ -1,4 +1,4 @@
 export enum AuthType {
-  Telegram = 'telegram',
+  Bearer = 'bearer',
   None = 'none',
 }

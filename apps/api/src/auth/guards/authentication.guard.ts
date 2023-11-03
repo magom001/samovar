@@ -7,23 +7,23 @@ import {
 import { Reflector } from '@nestjs/core';
 import { AuthType } from '../enums/auth-type';
 import { AUTH_TYPE_KEY } from '../decorators/auth.decorator';
-import { TelegramGuard } from './telegram.guard';
+import { AccessTokenGuard } from './access-token.guard';
 
 @Injectable()
 export class AuthenticationGuard implements CanActivate {
-  private static readonly defaultAuthTypes = [AuthType.Telegram];
+  private static readonly defaultAuthTypes = [AuthType.Bearer];
 
   private readonly authTypeGuardMap: Record<
     AuthType,
     CanActivate | CanActivate[]
   > = {
-    [AuthType.Telegram]: this.telegramGuard,
+    [AuthType.Bearer]: this.accessTokenGuard,
     [AuthType.None]: { canActivate: () => true },
   };
 
   constructor(
     private readonly reflector: Reflector,
-    private readonly telegramGuard: TelegramGuard,
+    private readonly accessTokenGuard: AccessTokenGuard,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
