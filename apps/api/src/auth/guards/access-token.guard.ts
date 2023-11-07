@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { REQUEST_USER_KEY } from '../auth.constants';
 import jwtConfig from '../config/jwt.config';
 
 @Injectable()
@@ -30,9 +31,8 @@ export class AccessTokenGuard implements CanActivate {
         token,
         this.jwtConfiguration,
       );
-      console.log('payload', payload);
-      // TODO: add the payload to the request once DB is working
-      //   request[REQUEST_USER_KEY] = payload;
+
+      request[REQUEST_USER_KEY] = payload;
     } catch (error) {
       throw new UnauthorizedException();
     }

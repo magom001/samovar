@@ -1,15 +1,17 @@
 import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+import { InitData } from '@tma.js/init-data-node';
+import { UserService } from 'src/users/services/user.service';
+import jwtConfig from '../config/jwt.config';
 import { TelegramLoginDto } from '../dtos/telegram-login.dto';
 import { TelegramAuthenticationService } from './telegram-authentication.service';
-import { InitData } from '@tma.js/init-data-node';
 import { User } from 'src/users/entities/user.entity';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigType } from '@nestjs/config';
-import jwtConfig from '../config/jwt.config';
 
 @Injectable()
 export class AuthenticationService {
   constructor(
+    private readonly userService: UserService,
     private readonly jwtService: JwtService,
     @Inject(jwtConfig.KEY)
     private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
@@ -35,10 +37,11 @@ export class AuthenticationService {
   }
 
   async generateAccessToken(user: User) {
+    const { id, ...payload } = user;
     const accessToken = await this.signToken(
-      user.id,
+      id,
       this.jwtConfiguration.accessTokenTtl,
-      user,
+      payload,
     );
 
     return { accessToken };
@@ -59,18 +62,9 @@ export class AuthenticationService {
     );
   }
 
-  private async getOrCreateUserByTelegramData(
+  private getOrCreateUserByTelegramData(
     userData: InitData['user'],
   ): Promise<User> {
-    // TODO: Implement with repository
-    const id = userData.id;
-    const firstName = userData.firstName;
-
-    const user = new User();
-    user.id = '123-123-123-123';
-    user.telegramId = id;
-    user.telegramUsername = firstName;
-
-    return user;
+    return this.userService.getOrCreateUserFromTelegramData(userData);
   }
 }

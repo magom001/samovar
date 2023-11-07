@@ -1,1 +1,1 @@
-export const TELEGRAM_USER_DATA_KEY = 'telegramUserData';
+export const REQUEST_USER_KEY = 'user';

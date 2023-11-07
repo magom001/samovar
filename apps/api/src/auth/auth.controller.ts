@@ -6,8 +6,10 @@ import {
   Post,
   UnauthorizedException,
 } from '@nestjs/common';
-import { TelegramLoginDto } from './dtos/telegram-login.dto';
+import { User } from 'src/users/entities/user.entity';
+import { ActiveUser } from './decorators/active-user.decorator';
 import { Auth } from './decorators/auth.decorator';
+import { TelegramLoginDto } from './dtos/telegram-login.dto';
 import { AuthType } from './enums/auth-type';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -28,12 +30,8 @@ export class AuthController {
 
   @Auth(AuthType.Bearer)
   @Get('login/test/telegram')
-  test() {
-    return true;
-  }
-
-  @Get('login/test/public')
-  testPublic() {
+  test(@ActiveUser() user: User) {
+    console.log('user', user);
     return true;
   }
 }

@@ -8,6 +8,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AccessTokenGuard } from './guards/access-token.guard';
+import { UserService } from 'src/users/services/user.service';
+import { DbService } from 'src/db/db.service';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { AccessTokenGuard } from './guards/access-token.guard';
     AccessTokenGuard,
     TelegramAuthenticationService,
     AuthenticationService,
+    DbService,
+    UserService,
   ],
 })
 export class AuthModule {}
