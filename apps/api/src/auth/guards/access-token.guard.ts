@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { User } from 'src/users/entities/user.entity';
 import { REQUEST_USER_KEY } from '../auth.constants';
 import jwtConfig from '../config/jwt.config';
 
@@ -27,12 +28,28 @@ export class AccessTokenGuard implements CanActivate {
     }
 
     try {
-      const payload = await this.jwtService.verifyAsync(
+      const payload = await this.jwtService.verifyAsync<User & { sub: string }>(
         token,
         this.jwtConfiguration,
       );
 
-      request[REQUEST_USER_KEY] = payload;
+      const {
+        firstName,
+        lastName,
+        telegramId,
+        telegramUsername,
+        avatarUrl,
+        sub: id,
+      } = payload;
+
+      request[REQUEST_USER_KEY] = {
+        avatarUrl,
+        firstName,
+        id,
+        lastName,
+        telegramId,
+        telegramUsername,
+      };
     } catch (error) {
       throw new UnauthorizedException();
     }

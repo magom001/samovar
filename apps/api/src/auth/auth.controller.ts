@@ -29,9 +29,8 @@ export class AuthController {
   }
 
   @Auth(AuthType.Bearer)
-  @Get('login/test/telegram')
+  @Get('whoami')
   test(@ActiveUser() user: User) {
-    console.log('user', user);
-    return true;
+    return user;
   }
 }
