@@ -33,20 +33,10 @@ export class AccessTokenGuard implements CanActivate {
         this.jwtConfiguration,
       );
 
-      const {
-        firstName,
-        lastName,
-        telegramId,
-        telegramUsername,
-        avatarUrl,
-        sub: id,
-      } = payload;
+      const { telegramId, telegramUsername, sub: id } = payload;
 
       request[REQUEST_USER_KEY] = {
-        avatarUrl,
-        firstName,
         id,
-        lastName,
         telegramId,
         telegramUsername,
       };

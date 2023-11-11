@@ -1,8 +1,13 @@
 export class User {
   id: string;
-  firstName: string;
-  lastName?: string;
   telegramId?: number;
   telegramUsername?: string;
-  avatarUrl?: string;
+}
+
+export class UserData extends User {
+  data?: {
+    firstName?: string;
+    lastName?: string;
+    avatarUrl?: string;
+  };
 }

@@ -12,11 +12,15 @@ import { Auth } from './decorators/auth.decorator';
 import { TelegramLoginDto } from './dtos/telegram-login.dto';
 import { AuthType } from './enums/auth-type';
 import { AuthenticationService } from './services/authentication.service';
+import { UserService } from 'src/users/services/user.service';
 
 @Auth(AuthType.None)
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authenticationService: AuthenticationService) {}
+  constructor(
+    private readonly authenticationService: AuthenticationService,
+    private readonly userService: UserService,
+  ) {}
 
   @HttpCode(200)
   @Post('login/telegram')
@@ -30,7 +34,8 @@ export class AuthController {
 
   @Auth(AuthType.Bearer)
   @Get('whoami')
-  test(@ActiveUser() user: User) {
-    return user;
+  async whoami(@ActiveUser() user: User) {
+    console.trace('whoami', user);
+    return await this.userService.getUserDataByUserId(user.id);
   }
 }
