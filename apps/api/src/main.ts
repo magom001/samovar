@@ -21,7 +21,7 @@ async function bootstrap() {
     type: VersioningType.URI,
   });
 
-  await app.listen(5002);
+  await app.listen(5002, '0.0.0.0');
 }
 
 bootstrap();

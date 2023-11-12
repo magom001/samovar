@@ -1,0 +1,7 @@
+node_modules
+dist
+.turbo
+@types
+ts-node
+yarn-error.log
+.env
