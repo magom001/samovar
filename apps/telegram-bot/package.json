@@ -1,0 +1,19 @@
+{
+  "name": "telegram-bot",
+  "packageManager": "yarn@4.0.1",
+  "scripts": {
+    "dev": "node --watch --loader=ts-node/esm ./src/index.ts",
+    "build": "npx tsc",
+    "start:prod": "node ./dist/index.js"
+  },
+  "devDependencies": {
+    "eslint-custom-config": "*",
+    "ts-node": "^10.9.1",
+    "tsconfig": "*"
+  },
+  "dependencies": {
+    "@grammyjs/i18n": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "grammy": "^1.19.2"
+  }
+}
