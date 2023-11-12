@@ -13,12 +13,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build-and-deploy-samovar-api:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout to the branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Azure Login
         uses: azure/login@v1

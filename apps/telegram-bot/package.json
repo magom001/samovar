@@ -1,12 +1,17 @@
 {
   "name": "telegram-bot",
+  "version": "1.0.0",
   "packageManager": "yarn@4.0.1",
+  "description": "Telegram bot for Floating Opera project",
+  "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "dev": "node --watch --loader=ts-node/esm ./src/index.ts",
     "build": "npx tsc",
     "start:prod": "node ./dist/index.js"
   },
   "devDependencies": {
+    "@types/node": "^20.9.0",
     "eslint-custom-config": "*",
     "ts-node": "^10.9.1",
     "tsconfig": "*"

@@ -1,7 +1,6 @@
-import { I18nFlavor } from "./../../../node_modules/@grammyjs/i18n/types/src/types.d";
-import { Bot, Context, GrammyError, HttpError, InlineKeyboard } from "grammy";
+import { I18n, I18nFlavor } from "@grammyjs/i18n";
 import dotenv from "dotenv";
-import { I18n } from "@grammyjs/i18n";
+import { Bot, Context, GrammyError, HttpError, InlineKeyboard } from "grammy";
 
 dotenv.config();
 
