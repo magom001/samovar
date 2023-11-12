@@ -1,0 +1,38 @@
+name: Trigger auto deployment for samovar-api
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: [main]
+    paths:
+      - "**"
+      - ".github/workflows/samovar-api-AutoDeployTrigger-840422b2-35c0-4b22-a6da-1f55db7f93e9.yml"
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.SAMOVARAPI_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }}
+          registryUrl: samovardcr.azurecr.io
+          registryUsername: ${{ secrets.SAMOVARAPI_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.SAMOVARAPI_REGISTRY_PASSWORD }}
+          containerAppName: samovar-api
+          resourceGroup: Samovar
+          dockerfilePath: apps/api/Dockerfile
+          imageToBuild: samovardcr.azurecr.io/samovar-api:${{ github.sha }}
