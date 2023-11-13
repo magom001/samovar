@@ -2,7 +2,8 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": [],
   "globalEnv": [
-    "NODE_ENV"
+    "NODE_ENV",
+    "REACT_APP_API_URL"
   ],
   "pipeline": {
     "build": {

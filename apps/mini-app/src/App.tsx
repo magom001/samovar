@@ -4,6 +4,7 @@ import { CssBaseline } from "ui/CssBaseline";
 import { createTheme } from "ui/styles";
 import { ThemeProvider } from "ui/styles/ThemeProvider";
 import "./App.css";
+import { QueryClient, QueryClientProvider } from "react-query";
 import i18nBuilder from "./i18n/Builder";
 import { router } from "./routes/Root";
 
@@ -42,13 +43,17 @@ const uiTheme = createTheme({
   },
 });
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
     <ThemeProvider theme={uiTheme}>
-      <Suspense>
-        <CssBaseline />
-        <RouterProvider router={router} />
-      </Suspense>
+      <QueryClientProvider client={queryClient}>
+        <Suspense>
+          <CssBaseline />
+          <RouterProvider router={router} />
+        </Suspense>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }

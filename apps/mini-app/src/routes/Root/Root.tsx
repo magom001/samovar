@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useQuery } from "react-query";
 import {
   Link,
   Outlet,
@@ -9,6 +10,7 @@ import { BottomNavigation } from "ui/BottomNavigation";
 import { BottomNavigationAction } from "ui/BottomNavigationAction";
 import { Icon } from "ui/Icon";
 import { Paper } from "ui/Paper";
+import { authenticatedHttpClient } from "../../services/http-client";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +19,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <div>Home</div>,
+        lazy: () => import("../Main"),
       },
       {
         path: "/map",
@@ -34,6 +36,11 @@ export const router = createBrowserRouter([
 export function Root() {
   const { t } = useTranslation(["common"]);
   const location = useLocation();
+
+  const { status, data } = useQuery("whoami", () =>
+    authenticatedHttpClient.get("api/v1/auth/whoami")
+  );
+  console.log("whoami result", status, data);
 
   return (
     <main>
