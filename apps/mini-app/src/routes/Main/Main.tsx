@@ -8,8 +8,9 @@ function GetWhoAmI(): Promise<AxiosResponse<{ telegramUsername: string }>> {
 
 export function Component() {
   const result = useQuery("whoami", GetWhoAmI, {
-    enabled: false, // Boolean(window.Telegram.WebApp.initData),
+    enabled: Boolean(window.Telegram.WebApp.initData),
   });
+
   console.log("whoami result", result);
   return (
     <main>
