@@ -1,16 +1,14 @@
+import { BottomNavigation } from "@samovar/ui/BottomNavigation";
+import { BottomNavigationAction } from "@samovar/ui/BottomNavigationAction";
+import { Icon } from "@samovar/ui/Icon";
+import { Paper } from "@samovar/ui/Paper";
 import { useTranslation } from "react-i18next";
-import { useQuery } from "react-query";
 import {
   Link,
   Outlet,
   createBrowserRouter,
   useLocation,
 } from "react-router-dom";
-import { BottomNavigation } from "ui/BottomNavigation";
-import { BottomNavigationAction } from "ui/BottomNavigationAction";
-import { Icon } from "ui/Icon";
-import { Paper } from "ui/Paper";
-import { authenticatedHttpClient } from "../../services/http-client";
 
 export const router = createBrowserRouter([
   {
@@ -33,22 +31,22 @@ export const router = createBrowserRouter([
   },
 ]);
 
+const bottomNavigationStyle = {
+  position: "fixed",
+  bottom: 0,
+  left: 0,
+  right: 0,
+  zIndex: 1000,
+};
+
 export function Root() {
   const { t } = useTranslation(["common"]);
   const location = useLocation();
 
-  const { status, data } = useQuery("whoami", () =>
-    authenticatedHttpClient.get("api/v1/auth/whoami")
-  );
-  console.log("whoami result", status, data);
-
   return (
     <main>
       <Outlet />
-      <Paper
-        elevation={3}
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-      >
+      <Paper elevation={3} sx={bottomNavigationStyle}>
         <BottomNavigation showLabels value={location.pathname}>
           <BottomNavigationAction
             LinkComponent={Link}
@@ -60,7 +58,7 @@ export function Root() {
           <BottomNavigationAction
             LinkComponent={Link}
             icon={<Icon>map</Icon>}
-            label={t("common:home")}
+            label={t("common:search")}
             to="/map"
             value="/map"
           />

@@ -1,10 +1,10 @@
+import { CssBaseline } from "@samovar/ui/CssBaseline";
+import { createTheme } from "@samovar/ui/styles";
+import { ThemeProvider } from "@samovar/ui/styles/ThemeProvider";
 import { Suspense } from "react";
-import { RouterProvider } from "react-router-dom";
-import { CssBaseline } from "ui/CssBaseline";
-import { createTheme } from "ui/styles";
-import { ThemeProvider } from "ui/styles/ThemeProvider";
-import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { RouterProvider } from "react-router-dom";
+import "./App.css";
 import i18nBuilder from "./i18n/Builder";
 import { router } from "./routes/Root";
 

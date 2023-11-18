@@ -1,8 +1,9 @@
+import { Button } from "@samovar/ui/Button";
+import { SwipeableDrawer } from "@samovar/ui/SwipeableDrawer";
+import type { LatLngTuple } from "leaflet";
 import { Icon } from "leaflet";
 import { useReducer } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { SwipeableDrawer } from "ui/SwipeableDrawer";
-import { Button } from "ui/Button";
 
 const swipeableStyle = {
   sx: {
@@ -42,8 +43,7 @@ export function Component() {
             attribution={m.id}
             icon={icon}
             key={m.name}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any -- dev only
-            position={m.location as any}
+            position={m.location}
           >
             <Popup>
               <h3>My name is {m.name}</h3>
@@ -64,11 +64,11 @@ export function Component() {
         <Button>3</Button>
         <Button>4</Button>
         <div
-          onTouchStart={(e) => {
+          onTouchEnd={(e) => {
             const el: HTMLDivElement = e.target as HTMLDivElement;
-            el.dataset.x = e.touches[0].clientX.toString();
-            console.log("touch start", e.target);
-            el.style.transition = "none";
+            el.removeAttribute("data-x");
+            el.style.transition = "all 0.5s ease-in-out";
+            el.style.transform = "translateX(0)";
           }}
           onTouchMove={(e) => {
             const el: HTMLDivElement = e.target as HTMLDivElement;
@@ -76,11 +76,11 @@ export function Component() {
               e.touches[0].clientX - parseInt(el.dataset.x as string, 10);
             el.style.transform = `translateX(${deltaX}px)`;
           }}
-          onTouchEnd={(e) => {
+          onTouchStart={(e) => {
             const el: HTMLDivElement = e.target as HTMLDivElement;
-            el.removeAttribute("data-x");
-            el.style.transition = "all 0.5s ease-in-out";
-            el.style.transform = "translateX(0)";
+            el.dataset.x = e.touches[0].clientX.toString();
+            console.log("touch start", e.target);
+            el.style.transition = "none";
           }}
         >
           <h1>XXXX</h1>
@@ -95,18 +95,18 @@ const musicians = [
     id: "1",
     name: "Miles Davis",
     instruments: ["trumpet", "flugelhorn", "keyboards", "synthesizer"],
-    location: [51.5325, -0.06],
+    location: [51.5325, -0.06] as LatLngTuple,
   },
   {
     id: "2",
     name: "Herbie Hancock",
     instruments: ["piano", "keyboards"],
-    location: [51.5188, -0.13],
+    location: [51.5188, -0.13] as LatLngTuple,
   },
   {
     id: "3",
     name: "Chick Corea",
     instruments: ["piano", "keyboards"],
-    location: [51.5228, -0.09],
+    location: [51.5228, -0.09] as LatLngTuple,
   },
 ];
