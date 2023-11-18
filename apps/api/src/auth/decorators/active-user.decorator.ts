@@ -1,5 +1,5 @@
 import { ExecutionContext, createParamDecorator } from '@nestjs/common';
-import { User } from 'src/users/entities/user.entity';
+import { User } from '@samovar/models';
 import { REQUEST_USER_KEY } from '../auth.constants';
 
 export const ActiveUser = createParamDecorator(

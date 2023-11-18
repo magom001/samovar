@@ -1,0 +1,20 @@
+{
+    "name": "@samovar/models",
+    "version": "1.0.0",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+      "dist/**/*"
+    ],
+    "scripts": {
+      "build": "tsup src/index.ts --format esm,cjs --dts --external node"
+    },
+    "dependencies": {
+      "class-validator": "^0.14.0"
+    },
+    "devDependencies": {
+      "tsup": "^6.2.3",
+      "typescript": "^5.1.3"
+    }
+  }

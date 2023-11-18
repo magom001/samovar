@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { User } from 'src/users/entities/user.entity';
+import { User } from '@samovar/models';
 import { REQUEST_USER_KEY } from '../auth.constants';
 import jwtConfig from '../config/jwt.config';
 

@@ -6,7 +6,7 @@ import { UserService } from 'src/users/services/user.service';
 import jwtConfig from '../config/jwt.config';
 import { TelegramLoginDto } from '../dtos/telegram-login.dto';
 import { TelegramAuthenticationService } from './telegram-authentication.service';
-import { User } from 'src/users/entities/user.entity';
+import { User } from '@samovar/models';
 
 @Injectable()
 export class AuthenticationService {
