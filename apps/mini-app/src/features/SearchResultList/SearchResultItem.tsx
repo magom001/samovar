@@ -18,7 +18,7 @@ export function SearchResultItem(props: SearchResultItemType) {
   const fullName = getFullName(props.user);
   return (
     <ListItem disablePadding>
-      <ListItemButton component="a" href={`@${props.user.telegramUsername}`}>
+      <ListItemButton component="a" href={`https://t.me/${props.user.telegramUsername}`}>
         <ListItemAvatar>
           <Avatar alt={`${fullName}`} src={props.user.data?.avatarUrl} />
         </ListItemAvatar>

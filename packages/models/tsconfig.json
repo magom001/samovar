@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/dtos.json",
-  "include": ["src"],
+  "extends": "tsconfig/models-library.json",
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }
