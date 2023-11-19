@@ -6,7 +6,7 @@ import {
   Post,
   UnauthorizedException,
 } from '@nestjs/common';
-import { User } from 'src/users/entities/user.entity';
+import { User } from '@samovar/models';
 import { ActiveUser } from './decorators/active-user.decorator';
 import { Auth } from './decorators/auth.decorator';
 import { TelegramLoginDto } from './dtos/telegram-login.dto';

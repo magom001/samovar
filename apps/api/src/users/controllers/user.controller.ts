@@ -1,8 +1,7 @@
 import { Body, Controller, Get, Header, Post, Put } from '@nestjs/common';
 import { UserService } from '../services/user.service';
 import { ActiveUser } from 'src/auth/decorators/active-user.decorator';
-import { User } from '../entities/user.entity';
-import { UpdateUserDataDto } from '../dtos/update_user_data.dto';
+import { User, UpdateUserDataDto } from '@samovar/models';
 
 @Controller('user')
 export class UserController {

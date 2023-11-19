@@ -20,8 +20,8 @@ export const router = createBrowserRouter([
         lazy: () => import("../Main"),
       },
       {
-        path: "/map",
-        lazy: () => import("../MapView"),
+        path: "/search",
+        lazy: () => import("../Search"),
       },
       {
         path: "/profile",
@@ -57,10 +57,10 @@ export function Root() {
           />
           <BottomNavigationAction
             LinkComponent={Link}
-            icon={<Icon>map</Icon>}
+            icon={<Icon>search</Icon>}
             label={t("common:search")}
-            to="/map"
-            value="/map"
+            to="/search"
+            value="/search"
           />
           <BottomNavigationAction
             LinkComponent={Link}

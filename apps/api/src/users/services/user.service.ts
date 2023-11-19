@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InitData } from '@tma.js/init-data-node';
 import { DbService } from 'src/db/db.service';
-import { User, UserData } from '../entities/user.entity';
-import { UserProfile } from '../entities/user_profile_entity';
-import { UpdateUserDataDto } from '../dtos/update_user_data.dto';
+import { User, UserData, UserProfile, UpdateUserDataDto } from '@samovar/models';
 
 @Injectable()
 export class UserService {

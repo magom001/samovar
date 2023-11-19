@@ -1,0 +1,11 @@
+{
+    "name": "@samovar/models",
+    "version": "1.0.0",
+    "main": "./index.ts",
+    "types": "./index.ts",
+    "private": true,
+    "devDependencies": {
+        "class-validator": "^0.14.0",
+        "tsconfig": "*"
+    }
+}
