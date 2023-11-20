@@ -16,9 +16,6 @@ jobs:
           node-version: 18
           cache: 'yarn'
 
-      - name: Setup yarn version
-        run: yarn version 4.0.1
-
       - name: Install dependencies
         run: yarn
 
