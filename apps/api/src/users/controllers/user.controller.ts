@@ -18,10 +18,7 @@ export class UserController {
   async createNewUserProfile() {}
 
   @Put('data')
-  async updateUserData(
-    @ActiveUser() user: User,
-    @Body() data: UpdateUserDataDto,
-  ) {
+  async updateUserData(@ActiveUser() user: User, @Body() data: UpdateUserDataDto) {
     return this.userService.upsertUserDataByUserId(user.id, data);
   }
 }

@@ -1,12 +1,12 @@
-import { CssBaseline } from "@samovar/ui/CssBaseline";
-import { createTheme } from "@samovar/ui/styles";
-import { ThemeProvider } from "@samovar/ui/styles/ThemeProvider";
-import { Suspense } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { RouterProvider } from "react-router-dom";
-import "./App.css";
-import i18nBuilder from "./i18n/Builder";
-import { router } from "./routes/Root";
+import { CssBaseline } from '@samovar/ui/CssBaseline';
+import { createTheme } from '@samovar/ui/styles';
+import { ThemeProvider } from '@samovar/ui/styles/ThemeProvider';
+import { Suspense } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { RouterProvider } from 'react-router-dom';
+import './App.css';
+import i18nBuilder from './i18n/Builder';
+import { router } from './routes/Root';
 
 /**
  * Get the value of a cookie
@@ -18,16 +18,14 @@ function getCookie(name: string): string | undefined {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) {
-    return parts.pop()?.split(";").shift();
+    return parts.pop()?.split(';').shift();
   }
 }
 
 function getUserLang(): string | undefined {
-  const lang = getCookie("lang");
+  const lang = getCookie('lang');
 
-  return (
-    lang ?? window.Telegram.WebApp?.initDataUnsafe?.user?.language_code ?? "en"
-  );
+  return lang ?? window.Telegram.WebApp?.initDataUnsafe?.user?.language_code ?? 'en';
 }
 
 i18nBuilder({
@@ -39,7 +37,7 @@ i18nBuilder({
 
 const uiTheme = createTheme({
   palette: {
-    mode: window.Telegram.WebApp.colorScheme ?? "light",
+    mode: window.Telegram.WebApp.colorScheme ?? 'light',
   },
 });
 

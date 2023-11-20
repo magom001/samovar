@@ -12,10 +12,7 @@ import { UserService } from 'src/users/services/user.service';
 import { DbService } from 'src/db/db.service';
 
 @Module({
-  imports: [
-    JwtModule.registerAsync(jwtConfig.asProvider()),
-    ConfigModule.forFeature(jwtConfig),
-  ],
+  imports: [JwtModule.registerAsync(jwtConfig.asProvider()), ConfigModule.forFeature(jwtConfig)],
   controllers: [AuthController],
   providers: [
     { provide: APP_GUARD, useClass: AuthenticationGuard },

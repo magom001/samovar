@@ -21,9 +21,7 @@ export class AuthenticationService {
   async signInWithTelegramInitData(telegramLoginDto: TelegramLoginDto) {
     try {
       // 1. Verify the user's data
-      const userData = await this.telegramAuthenticationService.verifyInitData(
-        telegramLoginDto.initData,
-      );
+      const userData = await this.telegramAuthenticationService.verifyInitData(telegramLoginDto.initData);
       // 2. Check if a user with the telegramId exists in the db
       // 3. Create if not exists
       const user = await this.getOrCreateUserByTelegramData(userData);
@@ -38,11 +36,7 @@ export class AuthenticationService {
 
   async generateAccessToken(user: User) {
     const { id, ...payload } = user;
-    const accessToken = await this.signToken(
-      id,
-      this.jwtConfiguration.accessTokenTtl,
-      payload,
-    );
+    const accessToken = await this.signToken(id, this.jwtConfiguration.accessTokenTtl, payload);
 
     return { accessToken };
   }
@@ -62,9 +56,7 @@ export class AuthenticationService {
     );
   }
 
-  private getOrCreateUserByTelegramData(
-    userData: InitData['user'],
-  ): Promise<User> {
+  private getOrCreateUserByTelegramData(userData: InitData['user']): Promise<User> {
     return this.userService.getOrCreateUserFromTelegramData(userData);
   }
 }

@@ -1,7 +1,6 @@
 {
   "name": "telegram-bot",
   "version": "1.0.0",
-  "packageManager": "yarn@4.0.1",
   "description": "Telegram bot for Floating Opera project",
   "license": "UNLICENSED",
   "private": true,

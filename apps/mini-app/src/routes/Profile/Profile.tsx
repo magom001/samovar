@@ -1,16 +1,16 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@samovar/ui/Button";
-import { Dialog, DialogContent, DialogTitle } from "@samovar/ui/Dialog";
-import { TextField } from "@samovar/ui/TextField";
-import { styled } from "@samovar/ui/styles";
-import { Suspense, lazy, useState } from "react";
-import type { SubmitHandler } from "react-hook-form";
-import { Controller, useForm } from "react-hook-form";
-import { z } from "zod";
-import { IconButton } from "@samovar/ui/IconButton";
-import { Icon } from "@samovar/ui/Icon";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from '@samovar/ui/Button';
+import { Dialog, DialogContent, DialogTitle } from '@samovar/ui/Dialog';
+import { TextField } from '@samovar/ui/TextField';
+import { styled } from '@samovar/ui/styles';
+import { Suspense, lazy, useState } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { IconButton } from '@samovar/ui/IconButton';
+import { Icon } from '@samovar/ui/Icon';
 
-const LazyProfileForm = lazy(() => import("../../features/ProfileForm"));
+const LazyProfileForm = lazy(() => import('../../features/ProfileForm'));
 
 interface Inputs {
   firstName: string;
@@ -19,17 +19,14 @@ interface Inputs {
 
 const schema = z
   .object({
-    firstName: z
-      .string({ required_error: "First name is required" })
-      .trim()
-      .min(3),
+    firstName: z.string({ required_error: 'First name is required' }).trim().min(3),
     lastName: z.string().min(3).max(10),
   })
   .required();
 
 const defaultValues: Inputs = {
-  firstName: "John",
-  lastName: "Doe",
+  firstName: 'John',
+  lastName: 'Doe',
 };
 
 const Form = styled.form`
@@ -57,7 +54,7 @@ export function Component() {
   // };
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log("submit", data);
+    console.log('submit', data);
   };
 
   return (
@@ -72,7 +69,7 @@ export function Component() {
               {...field}
               error={Boolean(errors?.firstName?.message)}
               fullWidth
-              helperText={errors?.firstName?.message ?? " "}
+              helperText={errors?.firstName?.message ?? ' '}
               margin="dense"
               variant="standard"
             />
@@ -82,14 +79,7 @@ export function Component() {
           control={control}
           name="lastName"
           render={({ field }) => (
-            <TextField
-              fullWidth
-              label="Last name"
-              {...field}
-              helperText={" "}
-              margin="dense"
-              variant="standard"
-            />
+            <TextField fullWidth label="Last name" {...field} helperText={' '} margin="dense" variant="standard" />
           )}
         />
         <input type="submit" />
@@ -112,7 +102,7 @@ export function Component() {
               onClick={() => {
                 setIsDialogOpen(false);
               }}
-              sx={{ position: "absolute", right: 8, top: 8 }}
+              sx={{ position: 'absolute', right: 8, top: 8 }}
             >
               <Icon>close</Icon>
             </IconButton>
@@ -126,4 +116,4 @@ export function Component() {
   );
 }
 
-Component.displayName = "Profile";
+Component.displayName = 'Profile';

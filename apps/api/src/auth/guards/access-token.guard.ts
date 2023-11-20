@@ -1,10 +1,4 @@
-import {
-  CanActivate,
-  ExecutionContext,
-  Inject,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@samovar/models';
@@ -28,10 +22,7 @@ export class AccessTokenGuard implements CanActivate {
     }
 
     try {
-      const payload = await this.jwtService.verifyAsync<User & { sub: string }>(
-        token,
-        this.jwtConfiguration,
-      );
+      const payload = await this.jwtService.verifyAsync<User & { sub: string }>(token, this.jwtConfiguration);
 
       const { telegramId, telegramUsername, sub: id } = payload;
 
@@ -49,10 +40,7 @@ export class AccessTokenGuard implements CanActivate {
 
   private extractTokenFromHeader(request: Request): string | undefined {
     // @ts-expect-error - The header is not typed
-    const [type, token] = request.headers.authorization?.split(' ') ?? [
-      undefined,
-      undefined,
-    ];
+    const [type, token] = request.headers.authorization?.split(' ') ?? [undefined, undefined];
     return type === 'Bearer' ? token : undefined;
   }
 }

@@ -1,17 +1,17 @@
-import { useQuery } from "react-query";
-import type { AxiosResponse } from "axios";
-import { authenticatedHttpClient } from "../../services/http-client";
+import { useQuery } from 'react-query';
+import type { AxiosResponse } from 'axios';
+import { authenticatedHttpClient } from '../../services/http-client';
 
 function GetWhoAmI(): Promise<AxiosResponse<{ telegramUsername: string }>> {
-  return authenticatedHttpClient.get("api/v1/auth/whoami");
+  return authenticatedHttpClient.get('api/v1/auth/whoami');
 }
 
 export function Component() {
-  const result = useQuery("whoami", GetWhoAmI, {
+  const result = useQuery('whoami', GetWhoAmI, {
     enabled: Boolean(window.Telegram.WebApp.initData),
   });
 
-  console.log("whoami result", result);
+  console.log('whoami result', result);
   return (
     <main>
       {result.isLoading ? (
@@ -23,4 +23,4 @@ export function Component() {
   );
 }
 
-Component.displayName = "Main";
+Component.displayName = 'Main';
