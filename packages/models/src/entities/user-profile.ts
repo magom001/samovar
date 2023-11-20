@@ -4,9 +4,9 @@ export enum UserProfileType {
 }
 
 export class UserProfile {
-  id: string;
-  type: UserProfileType;
-  value: string;
-  latitude: number;
-  longitude: number;
+  id!: string;
+  type!: UserProfileType;
+  value!: string;
+  latitude!: number;
+  longitude!: number;
 }

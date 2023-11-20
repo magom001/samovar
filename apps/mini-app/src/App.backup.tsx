@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { useMapEvents } from "react-leaflet";
-import "./App.css";
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useMapEvents } from 'react-leaflet';
+import './App.css';
 
 // interface WebAppUser {
 //   firstName: string;
@@ -15,7 +15,7 @@ import "./App.css";
 function Toolbox() {
   useEffect(() => {
     try {
-      console.log("env", process.env.NODE_ENV);
+      console.log('env', process.env.NODE_ENV);
       window.Telegram.WebApp.ready();
     } catch (err) {
       console.error(err);
@@ -43,36 +43,34 @@ function Toolbox() {
 
   const map = useMapEvents({
     load: () => {
-      console.log("map loaded");
+      console.log('map loaded');
     },
     resize: () => {
-      console.log("resize");
+      console.log('resize');
     },
     dragend: () => {
-      console.log("dragend");
+      console.log('dragend');
       const bounds = map.getBounds();
-      console.log("bounds", bounds.getNorthEast(), bounds.getSouthWest());
+      console.log('bounds', bounds.getNorthEast(), bounds.getSouthWest());
     },
     zoomend: () => {
       const bounds = map.getBounds();
-      console.log("bounds", bounds.getNorthEast(), bounds.getSouthWest());
-      console.log("zoomend");
+      console.log('bounds', bounds.getNorthEast(), bounds.getSouthWest());
+      console.log('zoomend');
     },
   });
 
-  const { t, i18n } = useTranslation(["common", "error"]);
+  const { t, i18n } = useTranslation(['common', 'error']);
 
   return (
     <div className="toolbox">
-      <h1>{t("common:filters")}</h1>
-      <p className="break-all">
-        {JSON.stringify(window.Telegram.WebApp.initDataUnsafe)}
-      </p>
+      <h1>{t('common:filters')}</h1>
+      <p className="break-all">{JSON.stringify(window.Telegram.WebApp.initDataUnsafe)}</p>
       <button
         onClick={() => {
           document.cookie = `lang=en; max-age=31536000;`;
           i18n
-            .changeLanguage("en")
+            .changeLanguage('en')
             .then(() => null)
             .catch(console.error);
         }}

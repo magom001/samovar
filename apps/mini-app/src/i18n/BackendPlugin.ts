@@ -1,15 +1,13 @@
-import type { BackendModule } from "i18next";
+import type { BackendModule } from 'i18next';
 
 const LazyImportPlugin: BackendModule = {
-  type: "backend",
+  type: 'backend',
   init() {
     // Noop
   },
   read(language, namespace, callback) {
-    console.log("reading", namespace, language);
-    import(
-      /* webpackChunkName: "i18n-[request]" */ `./locales/${language}/${namespace}.json`
-    )
+    console.log('reading', namespace, language);
+    import(/* webpackChunkName: "i18n-[request]" */ `./locales/${language}/${namespace}.json`)
       .then((obj: object) => {
         callback(null, obj);
       })

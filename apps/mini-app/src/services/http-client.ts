@@ -1,6 +1,6 @@
-import type { AxiosError, InternalAxiosRequestConfig } from "axios";
-import axios from "axios";
-import { API_URL } from "./constants";
+import type { AxiosError, InternalAxiosRequestConfig } from 'axios';
+import axios from 'axios';
+import { API_URL } from './constants';
 
 export const anonymousHttpClient = axios.create({ baseURL: API_URL });
 export const authenticatedHttpClient = axios.create({ baseURL: API_URL });
@@ -17,9 +17,7 @@ class TelegramAuthInterceptor {
     if (!this.token) {
       const { accessToken } = await this.getTelegramToken();
       this.token = accessToken;
-      console.debug(
-        "[TelegramAuthInterceptor][onRequest] received accessToken"
-      );
+      console.debug('[TelegramAuthInterceptor][onRequest] received accessToken');
     }
 
     config.headers.Authorization = `Bearer ${this.token}`;
@@ -28,9 +26,7 @@ class TelegramAuthInterceptor {
 
   onRejectedResponse = (error: AxiosError) => {
     if (error.response?.status === 401 && error.config) {
-      console.debug(
-        "[TelegramAuthInterceptor][onRejectedResponse] received 401"
-      );
+      console.debug('[TelegramAuthInterceptor][onRejectedResponse] received 401');
       this.token = undefined;
 
       return authenticatedHttpClient(error.config);
@@ -41,11 +37,9 @@ class TelegramAuthInterceptor {
 
   getTelegramToken(): Promise<AccessTokenPayload> {
     if (!this.tokenPromise) {
-      console.debug(
-        "[TelegramAuthInterceptor][getTelegramToken] requesting JWT token"
-      );
+      console.debug('[TelegramAuthInterceptor][getTelegramToken] requesting JWT token');
       this.tokenPromise = anonymousHttpClient
-        .post<AccessTokenPayload>("/api/v1/auth/login/telegram", {
+        .post<AccessTokenPayload>('/api/v1/auth/login/telegram', {
           initData: window.Telegram.WebApp.initData,
         })
         .then((response) => response.data)
@@ -60,10 +54,5 @@ class TelegramAuthInterceptor {
 
 const telegramAuthInterceptor = new TelegramAuthInterceptor();
 
-authenticatedHttpClient.interceptors.request.use(
-  telegramAuthInterceptor.onRequest
-);
-authenticatedHttpClient.interceptors.response.use(
-  undefined,
-  telegramAuthInterceptor.onRejectedResponse
-);
+authenticatedHttpClient.interceptors.request.use(telegramAuthInterceptor.onRequest);
+authenticatedHttpClient.interceptors.response.use(undefined, telegramAuthInterceptor.onRejectedResponse);

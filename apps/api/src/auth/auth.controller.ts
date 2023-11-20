@@ -1,11 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  HttpCode,
-  Post,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post, UnauthorizedException } from '@nestjs/common';
 import { User } from '@samovar/models';
 import { ActiveUser } from './decorators/active-user.decorator';
 import { Auth } from './decorators/auth.decorator';

@@ -1,12 +1,12 @@
-import { Button } from "@samovar/ui/Button";
-import { Step, StepContent, StepLabel, Stepper } from "@samovar/ui/Stepper";
-import { InputLabel } from "@samovar/ui/InputLabel";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Select } from "@samovar/ui/Select";
-import { MenuItem } from "@samovar/ui/MenuItem";
-import { Controller, useForm } from "react-hook-form";
-import { FormControl } from "@samovar/ui/FormControl";
+import { Button } from '@samovar/ui/Button';
+import { Step, StepContent, StepLabel, Stepper } from '@samovar/ui/Stepper';
+import { InputLabel } from '@samovar/ui/InputLabel';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Select } from '@samovar/ui/Select';
+import { MenuItem } from '@samovar/ui/MenuItem';
+import { Controller, useForm } from 'react-hook-form';
+import { FormControl } from '@samovar/ui/FormControl';
 
 const STEPS_MAP: Record<string, (arg: () => void) => JSX.Element[]> = {
   musician: MusicianSteps,
@@ -14,7 +14,7 @@ const STEPS_MAP: Record<string, (arg: () => void) => JSX.Element[]> = {
 };
 
 function ProfileForm() {
-  const { t } = useTranslation(["profile"]);
+  const { t } = useTranslation(['profile']);
   const [activeStep, setActiveStep] = useState(0);
   const { handleSubmit, control, watch } = useForm<Record<string, string>>({});
 
@@ -22,18 +22,18 @@ function ProfileForm() {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const profile = watch("type");
+  const profile = watch('type');
   const Component = STEPS_MAP[profile];
 
   const onSubmit = (data: unknown) => {
-    console.log("data", data);
+    console.log('data', data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
-          <StepLabel>{t("Select profile")}</StepLabel>
+          <StepLabel>{t('Select profile')}</StepLabel>
           <StepContent>
             <Controller
               control={control}
@@ -42,12 +42,7 @@ function ProfileForm() {
               render={({ field }) => (
                 <FormControl fullWidth>
                   <InputLabel id="profile-type">Select profile type</InputLabel>
-                  <Select
-                    id="profile-type"
-                    label="Select profile type"
-                    labelId="profile-type"
-                    {...field}
-                  >
+                  <Select id="profile-type" label="Select profile type" labelId="profile-type" {...field}>
                     <MenuItem value="musician">Musician</MenuItem>
                     <MenuItem value="singer">Singer</MenuItem>
                   </Select>

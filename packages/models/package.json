@@ -1,11 +1,18 @@
 {
     "name": "@samovar/models",
     "version": "1.0.0",
-    "main": "./index.ts",
-    "types": "./index.ts",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "private": true,
+    "scripts": {
+        "build": "tsc",
+        "lint": "eslint \"{src,}/**/*.ts\" --fix"
+    },
+    "dependencies": {
+        "class-validator": "^0.14.0"
+    },
     "devDependencies": {
-        "class-validator": "^0.14.0",
+        "eslint-custom-config": "*",
         "tsconfig": "*"
     }
 }

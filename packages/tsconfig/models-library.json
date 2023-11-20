@@ -3,9 +3,14 @@
   "display": "Models Library",
   "extends": "./base.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "lib": ["ES2015", "DOM"],
-    "module": "ESNext",
-    "target": "es6"
+    "lib": [
+      "ES2015",
+      "DOM"
+    ],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "ES6",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }

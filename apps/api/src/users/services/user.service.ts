@@ -13,9 +13,7 @@ export class UserService {
    * @param userData user data object from telegram.
    * @returns User object from database.
    */
-  async getOrCreateUserFromTelegramData(
-    userData: InitData['user'],
-  ): Promise<User> {
+  async getOrCreateUserFromTelegramData(userData: InitData['user']): Promise<User> {
     const newUser = new User();
     newUser.telegramId = userData.id;
     newUser.telegramUsername = userData.username;
