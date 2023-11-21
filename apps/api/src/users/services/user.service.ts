@@ -53,7 +53,7 @@ export class UserService {
   async upsertUserDataByUserId(userId: string, data: UpdateUserDataDto) {
     const users = await this.dbService.sql<UserData[]>`
       INSERT INTO user_data (user_id, data) VALUES (${userId}, ${data})
-      ON CONFLICT (user_id) DO UPDATE SET data=${data as any}, updated_at=NOW()
+      ON CONFLICT (user_id) DO UPDATE SET data=user_data.data || EXCLUDED.data::jsonb, updated_at=NOW()
       RETURNING *
     `;
 

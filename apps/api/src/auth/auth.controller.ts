@@ -28,7 +28,7 @@ export class AuthController {
   @Auth(AuthType.Bearer)
   @Get('whoami')
   async whoami(@ActiveUser() user: User) {
-    console.trace('whoami', user);
+    console.debug('whoami', user);
     return await this.userService.getUserDataByUserId(user.id);
   }
 }
