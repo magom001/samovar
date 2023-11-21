@@ -3,20 +3,10 @@ import type { AxiosResponse } from 'axios';
 import { useMutation, useQuery } from 'react-query';
 import { TextField } from '@samovar/ui/TextField';
 import { Button } from '@samovar/ui/Button';
+import type { UpdateUserDataDto, UserData } from '@samovar/models';
 import { authenticatedHttpClient } from '../../services/http-client';
 
-// TODO: refactor all models
-interface WhoAmIData {
-  data: PersonalData | null;
-}
-
-interface PersonalData {
-  firstName?: string;
-  lastName?: string;
-  avatarUrl?: string;
-}
-
-function getWhoAmI(): Promise<AxiosResponse<WhoAmIData>> {
+function getWhoAmI(): Promise<AxiosResponse<UserData>> {
   return authenticatedHttpClient.get('api/v1/auth/whoami');
 }
 
@@ -28,13 +18,13 @@ export function PersonalDataForm() {
     control,
     reset,
     formState: { isDirty },
-  } = useForm<PersonalData>({
+  } = useForm<UpdateUserDataDto>({
     defaultValues: result.data?.data?.data || {},
   });
 
   const mutation = useMutation({
-    mutationFn: (data: PersonalData) => {
-      return authenticatedHttpClient.put<WhoAmIData>('api/v1/user/data', data);
+    mutationFn: (data: UpdateUserDataDto) => {
+      return authenticatedHttpClient.put<UserData>('api/v1/user/data', data);
     },
     onSuccess: ({ data: { data } }) => {
       console.log('on mutation success', data);
@@ -42,7 +32,7 @@ export function PersonalDataForm() {
     },
   });
 
-  const onSubmit = (data: PersonalData) => {
+  const onSubmit = (data: UpdateUserDataDto) => {
     console.log('data', data);
     mutation.mutate(data);
   };
