@@ -14,9 +14,12 @@
     "typescript": "^5.2.2"
   },
   "name": "samovar",
-  "packageManager": "yarn@4.0.1",
+  "packageManager": "yarn@4.0.2",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "engines": {
+    "node": ">= 18.0.0"
+  }
 }
