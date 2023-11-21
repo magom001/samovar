@@ -1,1 +1,1 @@
-export { PersonalDataForm } from "./PersonalDataForm";
+export { PersonalDataForm } from './PersonalDataForm';
