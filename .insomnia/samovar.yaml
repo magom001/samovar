@@ -1,0 +1,339 @@
+_type: export
+__export_format: 4
+__export_date: 2023-11-22T19:46:24.171Z
+__export_source: insomnia.desktop.app:v8.4.4
+resources:
+  - _id: req_b67b9366bc5b4488afacc47ec52f266b
+    parentId: fld_d01e4e61c3a94f2885483995f5c89805
+    modified: 1700329107978
+    created: 1700329044183
+    url: https://api.imgur.com/3/image/YvTZQJ2rDNJbhIV
+    name: Delete image
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.4.2
+        id: pair_d3f0f36ec45f45dd8a2f17168397a9eb
+      - id: pair_41102750187240d9b474e74700cd7fa3
+        name: Authorization
+        value: Client-ID fab3459cc08732e
+        description: ""
+    authentication: {}
+    metaSortKey: -1700329044183
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_d01e4e61c3a94f2885483995f5c89805
+    parentId: wrk_f4768d5804634d43a07e0a6f5af8f594
+    modified: 1700328717729
+    created: 1700328717729
+    name: Imgur
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1700328717729
+    _type: request_group
+  - _id: wrk_f4768d5804634d43a07e0a6f5af8f594
+    parentId: null
+    modified: 1698503079218
+    created: 1698503079218
+    name: Samovar
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_3846970a7ce4463988b49186a0b1a700
+    parentId: fld_d01e4e61c3a94f2885483995f5c89805
+    modified: 1700328841359
+    created: 1700328728281
+    url: https://api.imgur.com/3/image
+    name: Upload image
+    description: ""
+    method: POST
+    body:
+      mimeType: application/octet-stream
+      fileName: /Users/magom001/Downloads/photo_2023-11-18 18.33.48.jpeg
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: image/jpeg
+      - name: User-Agent
+        value: insomnia/8.4.2
+        id: pair_e1b9922c70c34886b8c326f71419d837
+      - id: pair_27c838b1c62748d990edec2b9d3c3342
+        name: Authorization
+        value: Client-ID fab3459cc08732e
+        description: ""
+    authentication: {}
+    metaSortKey: -1700328728281
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_375fed83de8240dab3c1b641bc8d1d8d
+    parentId: fld_2e42996b5bbc432798c6d55291d408ca
+    modified: 1699769103850
+    created: 1699735523841
+    url: "{{host}}/api/v1/health"
+    name: Health check
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.4.0
+    authentication: {}
+    metaSortKey: -1699735523841
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_2e42996b5bbc432798c6d55291d408ca
+    parentId: wrk_f4768d5804634d43a07e0a6f5af8f594
+    modified: 1699735580407
+    created: 1699735520002
+    name: Health
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1699735520002
+    _type: request_group
+  - _id: req_31c4859420634bdaa87e99657f05686f
+    parentId: fld_bfdafed760d14d7f8f1b01e8747cc3f3
+    modified: 1700337037212
+    created: 1699715212350
+    url: "{{host}}/api/v1/user/data"
+    name: Update current user data
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"firstName": "Arkady",
+        	"lastName": "Magomedov"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.4.0
+    authentication:
+      type: bearer
+      token: "{{TOKEN}}"
+      prefix: Bearer
+    metaSortKey: -1699715212350
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_bfdafed760d14d7f8f1b01e8747cc3f3
+    parentId: wrk_f4768d5804634d43a07e0a6f5af8f594
+    modified: 1699709252320
+    created: 1699709231891
+    name: User Controller
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1699709231891
+    _type: request_group
+  - _id: req_6b3fa7b49a33423089fa9f4fb8ddae03
+    parentId: fld_bfdafed760d14d7f8f1b01e8747cc3f3
+    modified: 1699772664022
+    created: 1699709255199
+    url: "{{host}}/api/v1/user/profiles"
+    name: Get current user profiles
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.4.0
+    authentication:
+      type: bearer
+      token: "{{TOKEN}}"
+      prefix: Bearer
+    metaSortKey: -1699709255199
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d32272ab40604048ab85373f65ef4406
+    parentId: fld_60ad093dc0224c98adfc00c368dfff64
+    modified: 1700299132973
+    created: 1698522837094
+    url: "{{host}}/api/v1/auth/login/telegram"
+    name: Login with telegram initData
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >
+        {
+        	"initData": "query_id=AAEWITUBAAAAABYhNQHJMxcp&user=%7B%22id%22%3A20259094%2C%22first_name%22%3A%22magom001%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22magom001%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1700298933&hash=04769516eab7c6ab2375d5ce72fa6eda537a30ec289f5a546e204b40efd97c75"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_2d474a3870b044629755950c6f50b11c
+      - name: User-Agent
+        value: insomnia/8.3.0
+        id: pair_ba4992a7c22c478f90e956efa73193a6
+    authentication: {}
+    metaSortKey: -1699004542185
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_60ad093dc0224c98adfc00c368dfff64
+    parentId: wrk_f4768d5804634d43a07e0a6f5af8f594
+    modified: 1699004535075
+    created: 1699004535075
+    name: Auth
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1699004535075
+    _type: request_group
+  - _id: req_e144a8affb624853bea4f6bf7a7ac51f
+    parentId: fld_60ad093dc0224c98adfc00c368dfff64
+    modified: 1699742217852
+    created: 1698507324237
+    url: "{{host}}/api/v1/auth/whoami"
+    name: Whoami
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.3.0
+        id: pair_22dfaca1cfb346d5b0fabac7a867ea30
+      - id: pair_87fd234a89fd40a48aeb8733e1c0a531
+        name: x-telegram-auth
+        value: user=%7B%22id%22%3A20259094%2C%22first_name%22%3A%22magom001%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22magom001%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-8574415440850048073&chat_type=private&auth_date=1698955657&hash=d0530b7bfd84230bd08e1830639b508ee6adb58cc052a0ba21f09d8a2295cf0e
+        description: ""
+    authentication:
+      type: bearer
+      token: "{{TOKEN}}"
+      prefix: Bearer
+    metaSortKey: -1699004542160
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_2ec79244a92e798a21b98f3962f44e3431bc91ba
+    parentId: wrk_f4768d5804634d43a07e0a6f5af8f594
+    modified: 1700337091438
+    created: 1698503079233
+    name: Base Environment
+    data:
+      TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlODRmYTJkYS02ZTRjLTQ3NTMtYTc3MS03ZmNlNTcwMzljN2IiLCJ0ZWxlZ3JhbUlkIjoyMDI1OTA5NCwidGVsZWdyYW1Vc2VybmFtZSI6Im1hZ29tMDAxIiwiY3JlYXRlZEF0IjoiMjAyMy0xMS0xM1QxODoyMzozNC45MTFaIiwidXBkYXRlZEF0IjoiMjAyMy0xMS0xOFQxODo0ODowNC4wODJaIiwiaWF0IjoxNzAwMzM2ODg0LCJleHAiOjE3MDAzNDA0ODQsImF1ZCI6ImxvY2FsaG9zdDo1MDAyIiwiaXNzIjoibG9jYWxob3N0OjUwMDIifQ.Pw1mkohFiibAWbM36md2pz4ADM5opFnH723Oh3AM2nI
+    dataPropertyOrder:
+      "&":
+        - TOKEN
+    color: null
+    isPrivate: false
+    metaSortKey: 1698503079233
+    _type: environment
+  - _id: jar_2ec79244a92e798a21b98f3962f44e3431bc91ba
+    parentId: wrk_f4768d5804634d43a07e0a6f5af8f594
+    modified: 1700328866037
+    created: 1698503079235
+    name: Default Jar
+    cookies:
+      - key: __cf_bm
+        value: bXWnEzRwZgMcAIu09EL5w.dKV80w.NijAX3rghr05Qo-1698522846-0-AS7O+2xgF0sIX9u9GlgZl9eIWPyGCXaxb2eKMqKUSrI1siuyQNzqr1aVuv4a7ytlC3VGSIQ+cE0G2YTPSfrZ12k=
+        expires: 2023-10-28T20:24:06.000Z
+        domain: doserverless.co
+        path: /
+        secure: true
+        httpOnly: true
+        hostOnly: false
+        creation: 2023-10-28T19:54:06.902Z
+        lastAccessed: 2023-10-28T19:54:06.902Z
+        sameSite: none
+        id: 953ad66a-8353-4d03-8f7b-07079ccdba98
+      - key: IMGURSESSION
+        value: 9d6767f3a7c382e487e8d02b4baf9615
+        domain: imgur.com
+        path: /
+        secure: true
+        httpOnly: true
+        hostOnly: false
+        creation: 2023-11-18T17:34:26.030Z
+        lastAccessed: 2023-11-18T17:34:26.030Z
+        id: 0e0ba603-76a5-4d78-8263-4a62d15bcdb9
+      - key: _nc
+        value: "1"
+        domain: imgur.com
+        path: /
+        httpOnly: true
+        hostOnly: false
+        creation: 2023-11-18T17:34:26.035Z
+        lastAccessed: 2023-11-18T17:34:26.035Z
+        id: c066b4db-9716-4396-86c2-260a6ee20d13
+    _type: cookie_jar
+  - _id: env_f1194b8ab1164c0dbbd5a7e957cc4b58
+    parentId: env_2ec79244a92e798a21b98f3962f44e3431bc91ba
+    modified: 1699725031681
+    created: 1699724968900
+    name: Local
+    data:
+      host: http://localhost:5002
+    dataPropertyOrder:
+      "&":
+        - host
+    color: null
+    isPrivate: false
+    metaSortKey: 1699724968900
+    _type: environment
+  - _id: env_69e8b39722084aaeb27fe9b6abcd2df1
+    parentId: env_2ec79244a92e798a21b98f3962f44e3431bc91ba
+    modified: 1699742122209
+    created: 1699742064793
+    name: QA
+    data:
+      host: https://samovar-api.purplebay-870f46c0.northeurope.azurecontainerapps.io
+    dataPropertyOrder:
+      "&":
+        - host
+    color: null
+    isPrivate: false
+    metaSortKey: 1699742064793
+    _type: environment
