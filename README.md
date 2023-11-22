@@ -1,81 +1,97 @@
-# Turborepo starter
+# Project Samovar
 
-This is an official starter Turborepo.
+_TODO: project description_
 
-## Using this example
+- [Project Samovar](#project-samovar)
+  - [Local setup](#local-setup)
+    - [Prerequisites](#prerequisites)
+    - [Setting up Telegram Bot and Mini App](#setting-up-telegram-bot-and-mini-app)
+    - [Local development](#local-development)
+      - [Frontend \& API](#frontend--api)
+      - [Telegram Bot development](#telegram-bot-development)
+    - [Testing API](#testing-api)
 
-Run the following command:
+## Local setup
 
-```sh
-npx create-turbo@latest
+### Prerequisites
+
+Make sure you have
+
+- Node 18. It is recommended to use [NVM](https://github.com/nvm-sh/nvm) to manage local Node installations.
+- [YARN](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) installed.
+- [Docker](https://docs.docker.com/engine/install/).
+- [Ngrok](https://ngrok.com/download)
+- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+### Setting up Telegram Bot and Mini App
+
+You must have a Telegram account to be able to run the steps below.
+
+1. Follow the steps from the official Telegram Bot [tutorial](https://core.telegram.org/bots/tutorial)
+2. Create a bot, name is arbitrary.
+3. By this step you should already be familiar with the [@BotFather](https://t.me/botfather).
+4. Run `/newapp` command in the BotFather's chat.
+5. Follow through the steps to get yourself a Mini App.
+
+### Local development
+
+Checkout the repository:
+
+```bash
+git checkout https://github.com/magom001/samovar.git
 ```
 
-## What's inside?
+From within the downloaded directory:
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```bash
+yarn install
 ```
 
-### Develop
+**TODO: SETUP LOCAL POSTGRES STEPS**
 
-To develop all apps and packages, run the following command:
+Search for `.env.sample` files, copy and rename them to `.env`. Fill in the required environment variables.
 
-```
-cd my-turborepo
-pnpm dev
-```
+#### Frontend & API
 
-### Remote Caching
+To start developing frontend and API locally, run in parallel:
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```bash
+yarn --cwd apps/mini-app start
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+and
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
+```bash
+yarn --cwd apps/api start:dev
 ```
 
-## Useful Links
+In another terminal, start ngrok:
 
-Learn more about the power of Turborepo:
+```bash
+ngrok http 3000
+```
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+Copy the generated `https://***.ngrok.app` URL.
+
+In @BotFather chat run:
+
+```
+/myapps
+```
+
+Choose the Mini App that you have created previously.
+
+Click `Edit Web App URL` and paste the ngrok URL.
+
+After that, if you open the Mini App link in Telegram, the request will be proxied to the dev server running on your machine.
+
+> [!WARNING]  
+> Make sure that `REACT_APP_API_URL` is not set in the `mini-app` [.env](./apps/mini-app/.env) file. If it is set, all API requests will be sent to that address.
+
+#### Telegram Bot development
+
+Simply copy the Telegram Bot token of your dev bot to the [.env](./apps/telegram-bot/.env) file and save it under `TELEGRAM_BOT_TOKEN`. Run the `telegram-bot` project. Start a chat with your bot in Telegram.
+
+### Testing API
+
+We use [Insomnia](https://insomnia.rest/download) to test the API. The workspace can be imported from the [yarm file](./.insomnia/samovar.yaml). Alternatively, contact the project administrators to add you to the workspace.
