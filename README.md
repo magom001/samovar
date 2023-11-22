@@ -1,6 +1,6 @@
 # Project Samovar
 
-*TODO: project description*
+_TODO: project description_
 
 - [Project Samovar](#project-samovar)
   - [Local setup](#local-setup)
@@ -11,12 +11,12 @@
       - [Telegram Bot development](#telegram-bot-development)
     - [Testing API](#testing-api)
 
-
 ## Local setup
 
 ### Prerequisites
 
-Make sure you have 
+Make sure you have
+
 - Node 18. It is recommended to use [NVM](https://github.com/nvm-sh/nvm) to manage local Node installations.
 - [YARN](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) installed.
 - [Docker](https://docs.docker.com/engine/install/).
@@ -36,11 +36,13 @@ You must have a Telegram account to be able to run the steps below.
 ### Local development
 
 Checkout the repository:
+
 ```bash
 git checkout https://github.com/magom001/samovar.git
 ```
 
 From within the downloaded directory:
+
 ```bash
 yarn install
 ```
