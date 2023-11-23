@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users(
     telegram_username VARCHAR,
 
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS unique_telegram_id ON users (telegram_id);
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS user_profiles (
     location geography(POINT),
 
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS user_profiles_geo_index ON user_profiles USING GIST (location);
