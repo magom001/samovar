@@ -1,4 +1,8 @@
 {
+    "Ok": "Ок",
+    "Cancel": "Отменить",
+    "Next month": "Следующий месяц",
+    "Previous month": "Предыдущий месяц",
     "test": "Test text",
     "filter": "Фильтр",
     "filters": "Фильтры"

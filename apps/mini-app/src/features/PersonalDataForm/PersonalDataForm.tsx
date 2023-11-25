@@ -1,9 +1,16 @@
-import { Controller, useForm } from 'react-hook-form';
-import type { AxiosResponse } from 'axios';
-import { useMutation, useQuery } from 'react-query';
-import { TextField } from '@samovar/ui/TextField';
-import { Button } from '@samovar/ui/Button';
 import type { UpdateUserDataDto, UserData } from '@samovar/models';
+import { Button } from '@samovar/ui/Button';
+import { DatePicker } from '@samovar/ui/DatePicker';
+import { Icon } from '@samovar/ui/Icon';
+import { IconButton } from '@samovar/ui/IconButton';
+import { TextField } from '@samovar/ui/TextField';
+import { Tooltip } from '@samovar/ui/Tooltip';
+import type { AxiosResponse } from 'axios';
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+import { Controller, useForm } from 'react-hook-form';
+import { useMutation, useQuery } from 'react-query';
+import { useTranslation } from 'react-i18next';
 import { authenticatedHttpClient } from '../../services/http-client';
 
 function getWhoAmI(): Promise<AxiosResponse<UserData>> {
@@ -11,14 +18,15 @@ function getWhoAmI(): Promise<AxiosResponse<UserData>> {
 }
 
 export function PersonalDataForm() {
-  const result = useQuery('whoami', getWhoAmI, { suspense: true });
+  const result = useQuery('whoami', getWhoAmI, { suspense: true, refetchOnWindowFocus: false });
+  const { t } = useTranslation(['common', 'profile']);
 
   const {
     handleSubmit,
     control,
     reset,
     formState: { isDirty },
-  } = useForm<UpdateUserDataDto>({
+  } = useForm<UpdateUserDataDto & { dateOfBirth?: Dayjs | null }>({
     defaultValues: result.data?.data?.data || {},
   });
 
@@ -42,13 +50,65 @@ export function PersonalDataForm() {
       <Controller
         control={control}
         name="firstName"
-        render={({ field }) => <TextField {...field} fullWidth margin="dense" size="small" />}
+        render={({ field }) => <TextField {...field} fullWidth label="First name" margin="dense" size="small" />}
       />
+
       <Controller
         control={control}
         name="lastName"
-        render={({ field }) => <TextField {...field} fullWidth margin="dense" size="small" />}
+        render={({ field }) => <TextField {...field} fullWidth label="Last name" margin="dense" size="small" />}
       />
+      <Controller
+        control={control}
+        defaultValue={null}
+        name="dateOfBirth"
+        render={({ field }) => {
+          const { value, ...rest } = field;
+          return (
+            <DatePicker
+              {...rest}
+              disableFuture
+              label={t('profile:Date of birth')}
+              localeText={{
+                toolbarTitle: '',
+                nextMonth: t('common:Next month'),
+                previousMonth: t('common:Previous month'),
+              }}
+              slotProps={{
+                textField: {
+                  margin: 'dense',
+                  size: 'small',
+                  fullWidth: true,
+                  InputProps: {
+                    endAdornment: (
+                      <Tooltip
+                        arrow
+                        enterTouchDelay={0}
+                        leaveTouchDelay={5000}
+                        placement="bottom-start"
+                        title={t('profile:Date of birth tooltip')}
+                      >
+                        <IconButton
+                          edge="end"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                          }}
+                        >
+                          <Icon>help_outline</Icon>
+                        </IconButton>
+                      </Tooltip>
+                    ),
+                  },
+                },
+              }}
+              timezone="UTC"
+              value={value ? dayjs.utc(value) : value}
+            />
+          );
+        }}
+      />
+
       <Button disabled={!isDirty} type="submit">
         Save
       </Button>
