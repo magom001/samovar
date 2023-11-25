@@ -88,6 +88,14 @@ The database's data will be persisted in the `.data` folder. All `*.sql` scripts
 
    Copy the generated `https://***.ngrok.app` URL.
 
+   In case you will get an error 'Invalid Host Header' please use the following commands:
+   ```
+   ngrok http 3000 --host-header="localhost:3000"
+   ngrok http --host-header=rewrite 3000
+   ```
+
+   Ref on [stackoverflow](https://stackoverflow.com/questions/45425721/invalid-host-header-when-ngrok-tries-to-connect-to-react-dev-server)
+
 1. In @BotFather chat run the following command:
 
    ```
