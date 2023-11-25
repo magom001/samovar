@@ -1,8 +1,13 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
+import utc from 'dayjs/plugin/utc';
+import { extend } from 'dayjs';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// Dayjs extend UTC
+extend(utc);
 
 try {
   window.Telegram.WebApp.ready();
