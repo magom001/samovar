@@ -1,4 +1,4 @@
-import type { UserProfile } from "..";
+import type { UserProfile } from '..';
 
 export class User {
   id!: string;

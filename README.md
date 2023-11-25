@@ -89,6 +89,7 @@ The database's data will be persisted in the `.data` folder. All `*.sql` scripts
    Copy the generated `https://***.ngrok.app` URL.
 
    In case you will get an error 'Invalid Host Header' please use the following commands:
+
    ```
    ngrok http 3000 --host-header="localhost:3000"
    ngrok http --host-header=rewrite 3000

@@ -9,7 +9,7 @@ export interface SearchResultProfileListType {
 export function SearchResultProfileList(result: SearchResultProfileListType) {
   if (result.profiles?.length) {
     return (
-      <List style={{minHeight: '100vh', overflow: 'auto'}} >
+      <List style={{ minHeight: '100vh', overflow: 'auto' }}>
         {result.profiles.map((profile) => (
           <SearchResultProfileItem key={profile.id} profile={profile} />
         ))}

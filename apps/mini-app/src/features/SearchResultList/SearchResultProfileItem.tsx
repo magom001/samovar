@@ -16,8 +16,8 @@ export function SearchResultProfileItem(props: SearchResultProfileItemType) {
           primary={props.profile.type}
           secondary={
             <Typography color="text.primary" component="span" sx={{ display: 'inline' }} variant="body2">
-            {`${props.profile.latitude  } x ${  props.profile.longitude}`}
-            </Typography>   
+              {`${props.profile.latitude} x ${props.profile.longitude}`}
+            </Typography>
           }
         />
       </ListItemButton>
