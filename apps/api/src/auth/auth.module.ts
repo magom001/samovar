@@ -9,17 +9,16 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AccessTokenGuard } from './guards/access-token.guard';
 import { UserService } from 'src/users/services/user.service';
-import { DbService } from 'src/db/db.service';
+import { UsersModule } from 'src/users/users.module';
 
 @Module({
-  imports: [JwtModule.registerAsync(jwtConfig.asProvider()), ConfigModule.forFeature(jwtConfig)],
+  imports: [JwtModule.registerAsync(jwtConfig.asProvider()), ConfigModule.forFeature(jwtConfig), UsersModule],
   controllers: [AuthController],
   providers: [
     { provide: APP_GUARD, useClass: AuthenticationGuard },
     AccessTokenGuard,
     TelegramAuthenticationService,
     AuthenticationService,
-    DbService,
     UserService,
   ],
 })
