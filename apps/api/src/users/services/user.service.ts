@@ -62,7 +62,22 @@ export class UserService {
 
   async getUserProfilesByUserId(userId: string): Promise<UserProfile[]> {
     const userProfiles = await this.dbService.sql<UserProfile[]>`
-      SELECT id, type, value, st_y(location::geometry) as latitutde, st_x(location::geometry) as longitude FROM user_profiles WHERE user_id=${userId}
+      SELECT id, type, value, st_x(location::geometry) as longitude, st_y(location::geometry) as latitude FROM user_profiles WHERE user_id=${userId}
+    `;
+
+    return userProfiles;
+  }
+
+  async getUserProfilesByLocation(
+    userId: string,
+    latitude: number,
+    longitude: number,
+    distance: number,
+  ): Promise<UserProfile[]> {
+    const userProfiles = await this.dbService.sql<UserProfile[]>`
+      SELECT id, type, value, st_x(location::geometry) as longitude, st_y(location::geometry) as latitude from user_profiles
+      WHERE ST_DWithin(location, ST_MakePoint(${longitude}, ${latitude})::geography, ${distance}) AND user_id != ${userId}
+      ORDER BY ST_Distance(location, ST_MakePoint(${longitude}, ${latitude})::geography);
     `;
 
     return userProfiles;

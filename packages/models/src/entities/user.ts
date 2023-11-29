@@ -1,3 +1,5 @@
+import type { UserProfile } from './user-profile';
+
 export class User {
   id!: string;
   telegramId?: number;
@@ -10,4 +12,5 @@ export class UserData extends User {
     lastName?: string;
     avatarUrl?: string;
   };
+  profiles?: UserProfile[];
 }

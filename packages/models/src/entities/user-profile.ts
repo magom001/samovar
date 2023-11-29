@@ -10,3 +10,9 @@ export class UserProfile {
   latitude!: number;
   longitude!: number;
 }
+
+export class UserProfileRequest {
+  lat!: number;
+  long!: number;
+  dist!: number;
+}
