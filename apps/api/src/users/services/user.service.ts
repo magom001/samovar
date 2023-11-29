@@ -2,10 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { InitData } from '@tma.js/init-data-node';
 import { DbService } from 'src/db/db.service';
 import { User, UserData, UserProfile, UpdateUserDataDto } from '@samovar/models';
+import { Readable } from 'node:stream';
+import { ImageUploadService, UploadResult } from './image-upload.service';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly dbService: DbService) {}
+  constructor(
+    private readonly dbService: DbService,
+    private readonly imageUploadService: ImageUploadService,
+  ) {}
 
   /**
    * Creates or updates user from telegram data.
@@ -81,5 +86,32 @@ export class UserService {
     `;
 
     return userProfiles;
+  }
+
+  async uploadAvatar(userId: string, image: { file: Iterable<Buffer> }): Promise<UploadResult> {
+    try {
+      // Upload image to the image hosting service.
+      const result = await this.imageUploadService.uploadImage(Readable.from(image.file));
+
+      // Delete the previous image if any.
+      const deleteUrl = await this.dbService.sql<
+        { deleteUrl: string }[]
+      >`SELECT data->>'deleteUrl' as "deleteUrl" from user_data where user_id=${userId}`;
+
+      if (deleteUrl.length) {
+        await this.imageUploadService.deleteImage(deleteUrl[0].deleteUrl);
+      }
+
+      // Update user data with the new image.
+      await this.dbService.sql`
+        INSERT INTO user_data (user_id, data) VALUES (${userId}, ${result})
+        ON CONFLICT (user_id) DO UPDATE SET data=user_data.data || EXCLUDED.data::jsonb, updated_at=NOW()
+      `;
+
+      return result;
+    } catch (e) {
+      console.error('Failed to upload avatar', e);
+      throw e;
+    }
   }
 }

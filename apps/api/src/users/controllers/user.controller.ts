@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Header, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Header, Post, Put, Req } from '@nestjs/common';
 import { UserService } from '../services/user.service';
 import { ActiveUser } from 'src/auth/decorators/active-user.decorator';
 import { User, UpdateUserDataDto, UserProfileRequest } from '@samovar/models';
@@ -28,5 +28,12 @@ export class UserController {
   @Header('Cache-Control', 'no-cache')
   async updateUserData(@ActiveUser() user: User, @Body() data: UpdateUserDataDto) {
     return this.userService.upsertUserDataByUserId(user.id, data);
+  }
+
+  @Post('avatar')
+  async uploadAvatar(@ActiveUser() user: User, @Req() request) {
+    const file = await request.file();
+
+    return await this.userService.uploadAvatar(user.id, file);
   }
 }
