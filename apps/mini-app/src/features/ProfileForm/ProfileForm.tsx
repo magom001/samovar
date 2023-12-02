@@ -54,7 +54,6 @@ function ProfileForm() {
               {...rest}
               disablePortal
               fullWidth
-              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions -- nonsense
               getOptionLabel={(option) => t(`instruments:${option.label}`)}
               onChange={(event, value) => {
                 onChange(value?.value);
