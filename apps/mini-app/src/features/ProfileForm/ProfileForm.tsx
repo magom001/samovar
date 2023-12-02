@@ -1,29 +1,23 @@
+import { Autocomplete } from '@samovar/ui/Autocomplete';
 import { Button } from '@samovar/ui/Button';
-import { Step, StepContent, StepLabel, Stepper } from '@samovar/ui/Stepper';
-import { InputLabel } from '@samovar/ui/InputLabel';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Select } from '@samovar/ui/Select';
-import { MenuItem } from '@samovar/ui/MenuItem';
-import { Controller, useForm } from 'react-hook-form';
 import { FormControl } from '@samovar/ui/FormControl';
-
-const STEPS_MAP: Record<string, (arg: () => void) => JSX.Element[]> = {
-  musician: MusicianSteps,
-  singer: SingerSteps,
-};
+import { FormControlLabel } from '@samovar/ui/FormControlLabel';
+import { FormLabel } from '@samovar/ui/FormLabel';
+import { InputLabel } from '@samovar/ui/InputLabel';
+import { MenuItem } from '@samovar/ui/MenuItem';
+import { Radio } from '@samovar/ui/Radio';
+import { RadioGroup } from '@samovar/ui/RadioGroup';
+import { Select } from '@samovar/ui/Select';
+import { TextField } from '@samovar/ui/TextField';
+import { Typography } from '@samovar/ui/Typography';
+import type { CustomTypeOptions } from 'i18next';
+import { Controller, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 function ProfileForm() {
-  const { t } = useTranslation(['profile']);
-  const [activeStep, setActiveStep] = useState(0);
-  const { handleSubmit, control, watch } = useForm<Record<string, string>>({});
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const profile = watch('type');
-  const Component = STEPS_MAP[profile];
+  const { t } = useTranslation(['profile', 'instruments']);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- dev
+  const { handleSubmit, control } = useForm<Record<string, any>>({});
 
   const onSubmit = (data: unknown) => {
     console.log('data', data);
@@ -31,61 +25,79 @@ function ProfileForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        <Step>
-          <StepLabel>{t('Select profile')}</StepLabel>
-          <StepContent>
-            <Controller
-              control={control}
-              defaultValue=""
-              name="type"
-              render={({ field }) => (
-                <FormControl fullWidth>
-                  <InputLabel id="profile-type">Select profile type</InputLabel>
-                  <Select id="profile-type" label="Select profile type" labelId="profile-type" {...field}>
-                    <MenuItem value="musician">Musician</MenuItem>
-                    <MenuItem value="singer">Singer</MenuItem>
-                  </Select>
-                </FormControl>
-              )}
+      <Controller
+        control={control}
+        defaultValue="musician"
+        name="type"
+        render={({ field }) => (
+          <FormControl fullWidth margin="dense">
+            <InputLabel id="profile-type">Select profile type</InputLabel>
+            <Select id="profile-type" label="Select profile type" labelId="profile-type" {...field}>
+              <MenuItem value="musician">
+                <Typography sx={{ textTransform: 'capitalize' }}>{t('profile:musician')}</Typography>
+              </MenuItem>
+            </Select>
+          </FormControl>
+        )}
+      />
+      <Controller
+        control={control}
+        name="instrument"
+        render={({ field }) => {
+          const { onChange, ...rest } = field;
+          return (
+            <Autocomplete<AutocompleteKeyValue>
+              {...rest}
+              disablePortal
+              fullWidth
+              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions -- nonsense
+              getOptionLabel={(option) => t(`instruments:${option.label}`)}
+              onChange={(event, value) => {
+                onChange(value?.value);
+              }}
+              options={Instruments}
+              renderInput={(params) => <TextField {...params} label="Instrument" margin="dense" />}
+              slotProps={{
+                paper: { sx: { textTransform: 'capitalize' } },
+              }}
             />
-            <Button onClick={handleNext}>Next</Button>
-          </StepContent>
-        </Step>
-        {Component ? Component(handleNext) : null}
-        <Step>
-          <StepLabel>Submit</StepLabel>
-          <StepContent>
-            <input type="submit" />
-          </StepContent>
-        </Step>
-      </Stepper>
+          );
+        }}
+      />
+      <Controller
+        control={control}
+        defaultValue="amateur"
+        name="skillLevel"
+        render={({ field }) => {
+          return (
+            <FormControl fullWidth margin="dense">
+              <FormLabel id="skill-level-group-label">Gender</FormLabel>
+              <RadioGroup {...field} aria-labelledby="skill-level-group-label">
+                <FormControlLabel control={<Radio />} label="Novice" value="novice" />
+                <FormControlLabel control={<Radio />} label="Amateur" value="amateur" />
+                <FormControlLabel control={<Radio />} label="Virtuoso" value="virtuoso" />
+              </RadioGroup>
+            </FormControl>
+          );
+        }}
+      />
+      <Button type="submit">Submit</Button>
     </form>
   );
 }
 
-function MusicianSteps(handleNext: () => void) {
-  return [
-    <Step key="1">
-      <StepLabel>Step musician</StepLabel>
-      <StepContent>
-        Content
-        <Button onClick={handleNext}>Next</Button>
-      </StepContent>
-    </Step>,
-  ];
+type KnownInstruments = keyof CustomTypeOptions['resources']['instruments'];
+
+interface AutocompleteKeyValue {
+  label: KnownInstruments;
+  value: string;
 }
 
-function SingerSteps(handleNext: () => void) {
-  return [
-    <Step key="2">
-      <StepLabel>Step singer</StepLabel>
-      <StepContent>
-        Content
-        <Button onClick={handleNext}>Next</Button>
-      </StepContent>
-    </Step>,
-  ];
-}
+const Instruments: AutocompleteKeyValue[] = [
+  { label: 'guitar', value: 'guitar' },
+  { label: 'bass', value: 'bass' },
+  { label: 'drums', value: 'drums' },
+  { label: 'piano', value: 'piano' },
+];
 
 export default ProfileForm;
