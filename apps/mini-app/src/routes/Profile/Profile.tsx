@@ -37,7 +37,7 @@ export function Component() {
               <Icon>close</Icon>
             </IconButton>
           </DialogTitle>
-          <DialogContent>
+          <DialogContent sx={{ overflow: 'visible' }}>
             <LazyProfileForm />
           </DialogContent>
         </Dialog>

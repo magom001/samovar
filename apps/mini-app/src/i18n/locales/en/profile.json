@@ -3,5 +3,8 @@
     "Fill in the form": "Fill in the form",
     "Submit": "Submit",
     "Date of birth": "Date of birth",
-    "Date of birth tooltip": "You can enter your date of birth to complete your profile and make it easier for others to find you. If you leave this field blank, your profile will not show up in the search results when someone filters by date of birth."
+    "Date of birth tooltip": "You can enter your date of birth to complete your profile and make it easier for others to find you. If you leave this field blank, your profile will not show up in the search results when someone filters by date of birth.",
+    "musician": "musician",
+    "Your skill level": "Your skill level",
+    "Where will others find you?": "Where will others find you?"
 }
