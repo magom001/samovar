@@ -48,7 +48,7 @@ export function GeoLocation({ value, onChange, sx }: GeoLocationProps) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MapCenterMarker onChange={onChange} />
-        <GeoCoder/>
+        <GeoCoder />
       </MapContainer>
     </Box>
   );
