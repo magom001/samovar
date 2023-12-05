@@ -33,7 +33,7 @@ export function GeoCoder() {
       map.fitBounds(e.geocode.bbox);
     })
     .addTo(map);
-  }, []);
+  }, [map]);
 
   return null;
 }
