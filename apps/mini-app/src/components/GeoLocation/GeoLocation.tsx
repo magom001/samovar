@@ -3,6 +3,7 @@ import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-lea
 import type { ComponentProps } from 'react';
 import { useEffect, useState } from 'react';
 import { useMyLocation } from '../../services/ip-geo-location.service';
+import { GeoCoder } from '../GeoCoder';
 
 interface MapCenterMarkerProps {
   onChange?: (value: [number, number]) => void;
@@ -47,6 +48,7 @@ export function GeoLocation({ value, onChange, sx }: GeoLocationProps) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MapCenterMarker onChange={onChange} />
+        <GeoCoder/>
       </MapContainer>
     </Box>
   );
