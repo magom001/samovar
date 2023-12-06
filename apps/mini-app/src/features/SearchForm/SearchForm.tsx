@@ -16,7 +16,7 @@ function SearchForm(props: SearchFormType) {
       <div>Search Form</div>
       <Box sx={{ minWidth: 120 }}>
         <FormControl disabled={props.disabled} fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <InputLabel id="demo-simple-select-label">Distance</InputLabel>
           <Select
             id="search-distance-select"
             label="Distance"

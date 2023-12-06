@@ -1,25 +1,10 @@
 import { Box } from '@samovar/ui/Box';
-import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import type { ComponentProps } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useMyLocation } from '../../services/ip-geo-location.service';
-
-interface MapCenterMarkerProps {
-  onChange?: (value: [number, number]) => void;
-}
-function MapCenterMarker(props: MapCenterMarkerProps) {
-  const map = useMap();
-  const [position, setPosition] = useState(map.getCenter());
-
-  useMapEvents({
-    click(e) {
-      setPosition(e.latlng);
-      props.onChange?.([e.latlng.lat, e.latlng.lng]);
-    },
-  });
-
-  return <Marker position={position} />;
-}
+import { GeoCoder } from '../GeoCoder';
+import { MapCenterMarker } from './MapCenterMarker';
 
 interface GeoLocationProps {
   value?: [number, number];
@@ -47,6 +32,7 @@ export function GeoLocation({ value, onChange, sx }: GeoLocationProps) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MapCenterMarker onChange={onChange} />
+        <GeoCoder onChange={onChange} />
       </MapContainer>
     </Box>
   );
