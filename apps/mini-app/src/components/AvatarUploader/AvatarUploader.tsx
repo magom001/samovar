@@ -22,7 +22,9 @@ export function AvatarUploader({ src: _src, avatarSize = 128 }: AvatarUploaderPr
     }
 
     input.onchange = () => {
+      console.log('change');
       const file = input.files?.item(0);
+      console.log('file', file);
       if (!file) {
         return;
       }
@@ -30,6 +32,11 @@ export function AvatarUploader({ src: _src, avatarSize = 128 }: AvatarUploaderPr
       mutation.mutate(file, {
         onSuccess: (result) => {
           setSrc(result.data.imageUrl);
+        },
+        onSettled: () => {
+          if (inputRef.current) {
+            inputRef.current.value = '';
+          }
         },
       });
     };
