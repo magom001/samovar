@@ -104,7 +104,10 @@ export class UserService {
 
       // Update user data with the new image.
       await this.dbService.sql`
-        INSERT INTO user_data (user_id, data) VALUES (${userId}, ${result})
+        INSERT INTO user_data (user_id, data) VALUES (${userId}, ${{
+          avatarUrl: result.imageUrl,
+          deleteUrl: result.deleteUrl,
+        }})
         ON CONFLICT (user_id) DO UPDATE SET data=user_data.data || EXCLUDED.data::jsonb, updated_at=NOW()
       `;
 

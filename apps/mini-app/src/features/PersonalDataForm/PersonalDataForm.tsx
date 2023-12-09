@@ -12,6 +12,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { authenticatedHttpClient } from '../../services/http-client';
+import { AvatarUploader } from '../../components/AvatarUploader/AvatarUploader';
 
 function getWhoAmI(): Promise<AxiosResponse<UserData>> {
   return authenticatedHttpClient.get('api/v1/auth/whoami');
@@ -47,6 +48,7 @@ export function PersonalDataForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <AvatarUploader src={result.data?.data.data?.avatarUrl} />
       <Controller
         control={control}
         name="firstName"
